@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire" "5.9.1"
+github "CoderMJLee/MJRefresh" "3.7.9"
+github "SnapKit/SnapKit" "5.7.1"
+github "SwiftyJSON/SwiftyJSON" "5.0.2"
+github "onevcat/Kingfisher" "7.12.0"
