@@ -52,9 +52,8 @@ import UIKit
 /// 该瀑布流layout与网络上流传的layout写法有些区别，具体表现为：
 /// 1.如果header的高度为0，则headerInset不会生效，footer也一样
 /// 2.如果section的itemCount为0，则sectionInset不会生效
-/// 3.如果section的itemCount为0，则header与headerInset不会生效，footer也一样
-/// 4.实现了header的吸顶效果，且能用代理控制生效的sectionList
-/// 5.实现了性能优化，没需要的时候不会重新走完整的prepare
+/// 3.实现了header的吸顶效果，且能用代理控制生效的sectionList
+/// 4.实现了性能优化，没需要的时候不会重新走完整的prepare
 /// 性能优化思路参考 https://www.jianshu.com/p/d0ca0ceb706a
 open class WaterfallLayout: UICollectionViewLayout {
     
@@ -176,11 +175,11 @@ open class WaterfallLayout: UICollectionViewLayout {
         
         for section in 0..<numberOfSections {
             let columnCount = columnCountForSection(section: section)
-            var sectioncolumnMaxY = [Double]()
+            var sectionColumnMaxY = [Double]()
             for _ in 0..<columnCount {
-                sectioncolumnMaxY.append(0)
+                sectionColumnMaxY.append(0)
             }
-            columnMaxY.append(sectioncolumnMaxY)
+            columnMaxY.append(sectionColumnMaxY)
         }
         
         var sectionMaxY = 0.0
@@ -202,7 +201,7 @@ open class WaterfallLayout: UICollectionViewLayout {
             let itemCount = collectionView.numberOfItems(inSection: section)
             
             //section header
-            if itemCount > 0 && headerHeight > 0 {
+            if headerHeight > 0 {
                 sectionMaxY += headerInset.top
                 
                 let attrs = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: Self.elementKindSectionHeader,
@@ -247,7 +246,7 @@ open class WaterfallLayout: UICollectionViewLayout {
             }
             
             //section footer
-            if itemCount > 0 && footerHeight > 0 {
+            if footerHeight > 0 {
                 sectionMaxY += footerInset.top
                 
                 let attrs = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: Self.elementKindSectionFooter,
