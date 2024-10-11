@@ -10,7 +10,7 @@ import UIKit
 open class BaseView: UIView {
     
     deinit {
-        printLog("\(#function): \(type(of: self))")
+        DBLog("\(#function): \(type(of: self))")
     }
     
     public required init?(coder: NSCoder) {

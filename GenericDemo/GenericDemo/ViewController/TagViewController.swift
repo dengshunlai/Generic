@@ -54,7 +54,7 @@ class TagViewController: ProjBaseViewController {
         
         tagView1.didClickTagBlock = { idx, tagContainer in
             let tag = tagContainer.tags[idx]
-            printLog("click idx = \(idx), tag = \(tag)")
+            DBLog("click idx = \(idx), tag = \(tag)")
             
             if tag == "再加一个" {
                 tagContainer.tags.append("加一")
@@ -80,7 +80,7 @@ class TagViewController: ProjBaseViewController {
         
         tagView2.didClickTagBlock = { idx, tagContainer in
             let tag = tagContainer.attrTags[idx]
-            printLog("click idx = \(idx), tag = \(tag)")
+            DBLog("click idx = \(idx), tag = \(tag)")
         }
         
         
@@ -112,7 +112,7 @@ extension TagViewController: TagContainerViewDelegate {
     }
     
     func tagContainerView(_ tagContainerView: TagContainerView, didSelected index: Int) {
-        printLog("didSelected: \(index)")
+        DBLog("didSelected: \(index)")
         
         //点击第0个再加一个
         if index == 0 && tagContainerView.tagViewList.count < 30 {

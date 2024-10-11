@@ -74,7 +74,7 @@ class BViewController: ProjBaseViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printLog("\(#function), \(indexPath)")
+        DBLog("\(#function), \(indexPath)")
         let vc = NextViewController.init()
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -247,7 +247,7 @@ class WaterfallLayoutTestVC4: ProjBaseViewController, UICollectionViewDataSource
     
     //MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printLog("\(indexPath.section)-\(indexPath.row)")
+        DBLog("\(indexPath.section)-\(indexPath.row)")
     }
 }
 

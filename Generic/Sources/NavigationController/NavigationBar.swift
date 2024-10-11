@@ -15,7 +15,7 @@ open class NavigationBar: UIView {
     open var onClickBack: (() -> Bool)?
     
     deinit {
-        printLog("\(#function): \(type(of: self))")
+        DBLog("\(#function): \(type(of: self))")
     }
     
     public override init(frame: CGRect) {

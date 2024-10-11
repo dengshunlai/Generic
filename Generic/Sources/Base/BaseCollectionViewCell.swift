@@ -12,7 +12,7 @@ open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
     open var bottomLine: UIView!
     
     deinit {
-        printLog("\(#function): \(type(of: self))")
+        DBLog("\(#function): \(type(of: self))")
     }
 
     public required init?(coder: NSCoder) {

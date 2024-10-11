@@ -96,9 +96,9 @@ class ViewLoadingViewController: ProjBaseViewController, UITableViewDataSource, 
     
     @objc func clickBtn1(sender: UIButton) {
         sender.generic.showLoading()
-        printLog("开始网络请求..")
+        DBLog("开始网络请求..")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            printLog("网络请求完毕")
+            DBLog("网络请求完毕")
             sender.generic.removeLoading()
         }
     }

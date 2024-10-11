@@ -14,7 +14,7 @@ open class BaseViewController: UIViewController {
     }()
     
     deinit {
-        printLog("\(#function): \(type(of: self))")
+        DBLog("\(#function): \(type(of: self))")
     }
     
     open override func viewDidLoad() {

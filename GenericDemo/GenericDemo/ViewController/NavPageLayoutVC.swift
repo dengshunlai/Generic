@@ -70,15 +70,15 @@ class NavPageLayoutVC: ProjBaseViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printLog("click: \(indexPath.row)")
+        DBLog("click: \(indexPath.row)")
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        printLog("willDisplay: \(indexPath.row)")
+        DBLog("willDisplay: \(indexPath.row)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        printLog("didEndDisplaying: \(indexPath.row)")
+        DBLog("didEndDisplaying: \(indexPath.row)")
     }
 }
 

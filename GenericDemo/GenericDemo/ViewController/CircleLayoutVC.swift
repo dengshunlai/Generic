@@ -122,21 +122,21 @@ class CircleLayoutVC: ProjBaseViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printLog("click: \(indexPath.row)")
+        DBLog("click: \(indexPath.row)")
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        printLog("willDisplay: \(indexPath.row)")
+        DBLog("willDisplay: \(indexPath.row)")
     }
     
     //MARK: UICollectionViewDelegateCircleLayout
     
     func collectionView(_ collectionView: UICollectionView, layout: CircleLayout, isBeginRotation: Bool) {
-        printLog("isBeginRotation")
+        DBLog("isBeginRotation")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout: CircleLayout, isEndRotation: Bool) {
-        printLog("isEndRotation: \(layout.selectedIndex)")
+        DBLog("isEndRotation: \(layout.selectedIndex)")
     }
 }
 

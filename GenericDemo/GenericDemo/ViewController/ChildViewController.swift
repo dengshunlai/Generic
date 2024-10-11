@@ -18,21 +18,21 @@ class ChildViewController: ProjBaseViewController {
     
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
-//        printLog("childVC viewWillAppear: \(idx)")
+//        DBLog("childVC viewWillAppear: \(idx)")
 //    }
 //    
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
-//        printLog("childVC viewDidAppear: \(idx)")
+//        DBLog("childVC viewDidAppear: \(idx)")
 //    }
 //    
 //    override func viewWillDisappear(_ animated: Bool) {
 //        super.viewWillDisappear(animated)
-//        printLog("childVC viewWillDisappear: \(idx)")
+//        DBLog("childVC viewWillDisappear: \(idx)")
 //    }
 //    
 //    override func viewDidDisappear(_ animated: Bool) {
 //        super.viewDidDisappear(animated)
-//        printLog("childVC viewDidDisappear: \(idx)")
+//        DBLog("childVC viewDidDisappear: \(idx)")
 //    }
 }

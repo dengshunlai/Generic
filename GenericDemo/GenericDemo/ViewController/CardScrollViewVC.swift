@@ -95,13 +95,13 @@ class CardScrollViewVC: ProjBaseViewController, CardScrollViewDelegate {
         }
         
         cardScrollView1.didScrollToIndex = { (view, index) in
-            printLog("cardScrollView1 index = \(index)")
+            DBLog("cardScrollView1 index = \(index)")
         }
         cardScrollView2.didScrollToIndex = { (view, index) in
-            printLog("cardScrollView2 index = \(index)")
+            DBLog("cardScrollView2 index = \(index)")
         }
         cardScrollView3.didScrollToIndex = { (view, index) in
-            printLog("cardScrollView3 index = \(index)")
+            DBLog("cardScrollView3 index = \(index)")
         }
         
         cardScrollView1.reloadData()
@@ -163,6 +163,6 @@ class CardScrollViewVC: ProjBaseViewController, CardScrollViewDelegate {
     }
     
     func cardScrollView(_ cardScrollView: CardScrollView, didSelectedIndex index: Int) {
-        printLog("click \(index)")
+        DBLog("click \(index)")
     }
 }
