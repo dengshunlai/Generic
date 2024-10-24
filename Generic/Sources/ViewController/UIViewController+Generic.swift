@@ -36,10 +36,8 @@ public extension GenericNameSpace where T: UIViewController {
         obj.view.addSubview(bar!)
         bar?.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bar!.leadingAnchor.constraint(equalTo: obj.view.leadingAnchor, constant: 0),
-            bar!.trailingAnchor.constraint(equalTo: obj.view.trailingAnchor, constant: 0),
             bar!.topAnchor.constraint(equalTo: obj.view.topAnchor, constant: 0),
-            bar!.heightAnchor.constraint(equalToConstant: Utils.safeAreaTop() + 44)
+            bar!.centerXAnchor.constraint(equalTo: obj.view.centerXAnchor),
         ])
         
         objc_setAssociatedObject(obj, &navigationBarKey, bar, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

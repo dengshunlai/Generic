@@ -53,7 +53,7 @@ open class NavigationBar: UIView {
         addSubview(titleLabel)
         
         bottomLine = UIView.init()
-        bottomLine.backgroundColor = UIColor.generic.hexColor("e4e4e4")
+        bottomLine.backgroundColor = UIColor.generic.hexColor("efefef")
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         addSubview(bottomLine)
         
@@ -75,6 +75,10 @@ open class NavigationBar: UIView {
         ])
         
         backBtn.addTarget(self, action: #selector(clickBackBtn(sender:)), for: .touchUpInside)
+    }
+    
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: kScreenWidth, height: Utils.safeAreaTop() + 44)
     }
     
     @objc func clickBackBtn(sender: UIButton) -> Void {

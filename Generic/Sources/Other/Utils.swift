@@ -84,4 +84,28 @@ open class Utils {
         }
         return window
     }
+    
+    public static func topViewController() -> UIViewController? {
+        var vc = UIApplication.shared.keyWindow?.rootViewController
+        let topVC = findNextViewControllerFrom(vc: vc)
+        return topVC
+    }
+    
+    public static func findNextViewControllerFrom(vc: UIViewController?) -> UIViewController? {
+        guard let vc = vc else { return nil }
+        var nextVC: UIViewController?
+        if vc.presentedViewController != nil {
+            nextVC = vc.presentedViewController
+            nextVC = findNextViewControllerFrom(vc: nextVC)
+        } else if let tc = vc as? UITabBarController {
+            nextVC = tc.selectedViewController
+            nextVC = findNextViewControllerFrom(vc: nextVC)
+        } else if let nc = vc as? UINavigationController {
+            nextVC = nc.visibleViewController
+            nextVC = findNextViewControllerFrom(vc: nextVC)
+        } else {
+            nextVC = vc
+        }
+        return nextVC
+    }
 }
