@@ -48,13 +48,13 @@ class ScrollViewController: ScrollContainerVC {
         vc3.idx = 3
         vc3.view.backgroundColor = UIColor.green
         
-        self.setViewControllers(viewControllers: [vc1, vc2, vc3])
+        self.viewControllers = [vc1, vc2, vc3]
         self.didScrollToBlock = { [unowned self] idx in
             self.sg.selectedSegmentIndex = idx
         }
     }
     
     @objc func sgValueChange(sender: UISegmentedControl) {
-        self.setSelectedIndex(sender.selectedSegmentIndex) 
+        self.selectedIndex = sender.selectedSegmentIndex
     }
 }

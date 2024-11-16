@@ -9,7 +9,10 @@ import UIKit
 
 open class TabBarController: UITabBarController {
     
-    public var aTabBar: TabBar!
+    public lazy var aTabBar: TabBar = {
+        let tabBar = TabBar.init()
+        return tabBar
+    }()
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -25,13 +28,14 @@ open class TabBarController: UITabBarController {
         self.init(nibName: nil, bundle: nil)
     }
     
-    open override func viewDidLoad() {
-        super.viewDidLoad()
+    func initialization() {
+        
     }
     
-    func initialization() {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         tabBar.isHidden = true
-        aTabBar = TabBar.init()
+        
         view.addSubview(aTabBar)
             
         aTabBar.onClickItem = { [unowned self] (idx: Int, item: TabBarItem) in

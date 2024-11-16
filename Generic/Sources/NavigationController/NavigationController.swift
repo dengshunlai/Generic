@@ -10,7 +10,8 @@ import UIKit
 open class NavigationController: UINavigationController {
     open var type = 0
     var animator: NCInteractiveAnimator!
-    public var edgePan: UIScreenEdgePanGestureRecognizer!
+    var edgePan: UIScreenEdgePanGestureRecognizer!
+    var popingViewController: UIViewController?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,6 +31,7 @@ open class NavigationController: UINavigationController {
         
         edgePan = UIScreenEdgePanGestureRecognizer.init(target: self, action: #selector(panPop(sender:)))
         edgePan.edges = .left
+        edgePan.delegate = self
         view.addGestureRecognizer(edgePan)
     }
     
@@ -39,6 +41,7 @@ open class NavigationController: UINavigationController {
             if viewControllers.count <= 1 {
                 break
             }
+            popingViewController = topViewController
             animator.isInteractive = true
             popViewController(animated: true)
         case .changed:
@@ -54,16 +57,51 @@ open class NavigationController: UINavigationController {
             }
             let point = sender.translation(in: view)
             let percent = point.x / kScreenWidth
-            if percent > 0.45 {
-                animator.completionSpeed = 1
-                animator.finish()
+            if percent > 0.35 {
+                if let gesturePopCallback = (popingViewController as? BaseViewController)?.gesturePopCallback {
+                    let b = gesturePopCallback()
+                    if b {
+                        animator.completionSpeed = 1
+                        animator.finish()
+                    } else {
+                        animator.completionSpeed = 0.5
+                        animator.cancel()
+                    }
+                } else {
+                    animator.completionSpeed = 1
+                    animator.finish()
+                }
             } else {
-                animator.completionSpeed = 0.5
-                animator.cancel()
+                let speed = sender.velocity(in: view)
+                if speed.x >= 800 {
+                    if let gesturePopCallback = (popingViewController as? BaseViewController)?.gesturePopCallback {
+                        let b = gesturePopCallback()
+                        if b {
+                            animator.completionSpeed = 1
+                            animator.finish()
+                        } else {
+                            animator.completionSpeed = 0.5
+                            animator.cancel()
+                        }
+                    } else {
+                        animator.completionSpeed = 1
+                        animator.finish()
+                    }
+                } else {
+                    animator.completionSpeed = 0.5
+                    animator.cancel()
+                }
             }
             animator.isInteractive = false
+            popingViewController = nil
         default:
             break
         }
+    }
+}
+
+extension NavigationController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

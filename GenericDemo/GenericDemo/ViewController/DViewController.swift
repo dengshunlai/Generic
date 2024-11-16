@@ -45,7 +45,7 @@ class DViewController: ProjBaseViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 14
+        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,6 +78,8 @@ class DViewController: ProjBaseViewController, UITableViewDataSource, UITableVie
             cell.fillCell(text: "UITextView+Generic")
         } else if indexPath.row == 13 {
             cell.fillCell(text: "CardScrollView")
+        } else if indexPath.row == 14 {
+            cell.fillCell(text: "NavigationPopCallBack")
         }
         return cell
     }
@@ -129,6 +131,9 @@ class DViewController: ProjBaseViewController, UITableViewDataSource, UITableVie
             self.navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.row == 13 {
             let vc = CardScrollViewVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.row == 14 {
+            let vc = PopCallbackVC()
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -9,8 +9,18 @@ import UIKit
 
 open class TabContainerVC: BaseViewController {
     
-    open var tc: UITabBarController!
-    open var containerView: UIView!
+    open lazy private(set) var tc: UITabBarController = {
+        let tc = UITabBarController()
+        tc.tabBar.isHidden = true
+        return tc
+    }()
+    
+    open var containerView: UIView {
+        get {
+            return tc.view
+        }
+    }
+    
     open var viewControllers: [UIViewController] = [] {
         didSet {
             tc.viewControllers = viewControllers
@@ -28,12 +38,8 @@ open class TabContainerVC: BaseViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        tc = UITabBarController()
-        tc.tabBar.isHidden = true
         self.addChild(tc)
         self.view.addSubview(tc.view)
         tc.didMove(toParent: self)
-        
-        containerView = tc.view
     }
 }

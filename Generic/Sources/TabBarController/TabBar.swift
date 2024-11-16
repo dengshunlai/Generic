@@ -10,8 +10,8 @@ import UIKit
 open class TabBar: UIView {
     
     open var itemList: Array<TabBarItem> = []
-    open var topLine: UIView!
     open var onClickItem: ((Int, TabBarItem) -> Void)?
+    open var topLine: UIView!
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)

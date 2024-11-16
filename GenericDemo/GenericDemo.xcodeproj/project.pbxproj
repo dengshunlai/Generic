@@ -28,6 +28,7 @@
 		5025C4B42BE9043900963BD8 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4B32BE9043900963BD8 /* TextCell.swift */; };
 		5025C4BF2BEA168E00963BD8 /* TextCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4BE2BEA168E00963BD8 /* TextCell2.swift */; };
 		50561EB72C3936C700292E3C /* UITextViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50561EB62C3936C700292E3C /* UITextViewVC.swift */; };
+		506926892CE8E18000E9A82B /* PopCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506926882CE8E18000E9A82B /* PopCallbackVC.swift */; };
 		506F132E2BEA6F20004FEA32 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506F132C2BEA6F20004FEA32 /* SwiftyJSON.xcframework */; };
 		506F132F2BEA6F20004FEA32 /* SwiftyJSON.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 506F132C2BEA6F20004FEA32 /* SwiftyJSON.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		509928292C3A8F1400CA0223 /* CardScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509928282C3A8F1400CA0223 /* CardScrollViewVC.swift */; };
@@ -118,6 +119,7 @@
 		5025C4B32BE9043900963BD8 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		5025C4BE2BEA168E00963BD8 /* TextCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell2.swift; sourceTree = "<group>"; };
 		50561EB62C3936C700292E3C /* UITextViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewVC.swift; sourceTree = "<group>"; };
+		506926882CE8E18000E9A82B /* PopCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCallbackVC.swift; sourceTree = "<group>"; };
 		506F132C2BEA6F20004FEA32 /* SwiftyJSON.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SwiftyJSON.xcframework; path = ../Carthage/Build/SwiftyJSON.xcframework; sourceTree = "<group>"; };
 		509928282C3A8F1400CA0223 /* CardScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScrollViewVC.swift; sourceTree = "<group>"; };
 		5099282A2C3AE3DB00CA0223 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				50EAEDF42C383BE200AC5A5F /* TextGradientColorVC.swift */,
 				50561EB62C3936C700292E3C /* UITextViewVC.swift */,
 				509928282C3A8F1400CA0223 /* CardScrollViewVC.swift */,
+				506926882CE8E18000E9A82B /* PopCallbackVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				509928292C3A8F1400CA0223 /* CardScrollViewVC.swift in Sources */,
 				500A837A2BFA2D7800A02BA1 /* MenuViewController.swift in Sources */,
 				5025C4BF2BEA168E00963BD8 /* TextCell2.swift in Sources */,
+				506926892CE8E18000E9A82B /* PopCallbackVC.swift in Sources */,
 				50AE4CA32C02195B004687E7 /* ScrollViewController.swift in Sources */,
 				5014F5742BE89AE700A4B9BB /* NextViewController.swift in Sources */,
 				5014F5722BE89AD800A4B9BB /* DViewController.swift in Sources */,

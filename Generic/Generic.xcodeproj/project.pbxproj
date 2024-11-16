@@ -147,9 +147,9 @@
 		50AE4CA42C02B2A2004687E7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				5025C4BA2BE9E91000963BD8 /* BaseViewController.swift */,
 				5025C4BC2BEA15C600963BD8 /* BaseCollectionViewCell.swift */,
 				5025C4B12BE8F2AC00963BD8 /* BaseTableViewCell.swift */,
-				5025C4BA2BE9E91000963BD8 /* BaseViewController.swift */,
 				50AE4CAA2C02B47F004687E7 /* BaseTableViewHeaderFooter.swift */,
 				50B815512C035F4100866915 /* BaseCollectionViewHeaderFooter.swift */,
 				5025C4AF2BE8F11100963BD8 /* IdentifierProtocol.swift */,

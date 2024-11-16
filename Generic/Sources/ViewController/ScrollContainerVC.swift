@@ -9,16 +9,53 @@ import UIKit
 
 open class ScrollContainerVC: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    open var cv: UICollectionView!
-    open var containerView: UIView!
-    open weak var selectedViewController: UIViewController?
-    open private(set) var selectedIndex: Int = 0 {
-        didSet {
-            preSelectedIdx = oldValue
+    open lazy private(set) var cv: UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
+        collectionView.bounces = false
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
+    open var containerView: UIView {
+        get {
+            return cv
         }
     }
+    
+    open var selectedViewController: UIViewController? {
+        get {
+            if selectedIndex < viewControllers.count {
+                return viewControllers[selectedIndex]
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    open var selectedIndex: Int = 0 {
+        didSet {
+            preSelectedIdx = oldValue
+            didSetSelectedIndex(selectedIndex)
+        }
+    }
+    
     open private(set) var preSelectedIdx: Int = -1
-    open private(set) var viewControllers: [UIViewController] = []
+    
+    open var viewControllers: [UIViewController] = [] {
+        didSet {
+            didSetViewControllers(viewControllers)
+        }
+    }
+    
     open var didScrollToBlock: ((Int) -> Void)?
     
     public required init?(coder: NSCoder) {
@@ -31,47 +68,22 @@ open class ScrollContainerVC: BaseViewController, UICollectionViewDataSource, UI
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
-        cv = {
-            let layout = UICollectionViewFlowLayout.init()
-            layout.scrollDirection = .horizontal
-            let collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.backgroundColor = UIColor.white
-            collectionView.showsVerticalScrollIndicator = false
-            collectionView.showsHorizontalScrollIndicator = false
-            collectionView.isPagingEnabled = true
-            collectionView.bounces = false
-            collectionView.contentInsetAdjustmentBehavior = .never
-            collectionView.translatesAutoresizingMaskIntoConstraints = false
-            return collectionView
-        }()
-        
         view.addSubview(cv)
-        
-        containerView = cv
     }
     
-    open func setViewControllers(viewControllers: [UIViewController]) {
-        self.viewControllers = viewControllers
+    private func didSetViewControllers(_ viewControllers: [UIViewController]) {
         for i in 0...viewControllers.count {
             cv.register(VCItem.self, forCellWithReuseIdentifier: VCItem.identifier(context: "\(type(of: self))_\(i)"))
         }
         cv.reloadData()
         if viewControllers.count > 0 {
             selectedIndex = 0
-            selectedViewController = viewControllers.first
             cv.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: false)
-        } else {
-            selectedViewController = nil
         }
     }
     
-    open func setSelectedIndex(_ idx: Int) {
-        selectedIndex = idx
+    open func didSetSelectedIndex(_ idx: Int) {
         cv.scrollToItem(at: IndexPath(row: selectedIndex, section: 0), at: .centeredHorizontally, animated: true)
-        selectedViewController = viewControllers[selectedIndex]
     }
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -111,7 +123,6 @@ open class ScrollContainerVC: BaseViewController, UICollectionViewDataSource, UI
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let idx = lround(scrollView.contentOffset.x / scrollView.frame.size.width)
-        selectedViewController = viewControllers[idx]
         selectedIndex = idx
         self.didScrollToBlock?(idx)
     }
