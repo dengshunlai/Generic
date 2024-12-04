@@ -118,6 +118,8 @@
 		50192B3B2C2B0DB3007C095F /* ImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgCell.swift; sourceTree = "<group>"; };
 		5025C4B32BE9043900963BD8 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		5025C4BE2BEA168E00963BD8 /* TextCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell2.swift; sourceTree = "<group>"; };
+		504C35AA2D00A4AC0021896D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		504C35AB2D00A4B40021896D /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		50561EB62C3936C700292E3C /* UITextViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewVC.swift; sourceTree = "<group>"; };
 		506926882CE8E18000E9A82B /* PopCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCallbackVC.swift; sourceTree = "<group>"; };
 		506F132C2BEA6F20004FEA32 /* SwiftyJSON.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SwiftyJSON.xcframework; path = ../Carthage/Build/SwiftyJSON.xcframework; sourceTree = "<group>"; };
@@ -237,6 +239,8 @@
 		50E2CED52BE68CB60051B01D = {
 			isa = PBXGroup;
 			children = (
+				504C35AA2D00A4AC0021896D /* README.md */,
+				504C35AB2D00A4B40021896D /* Cartfile */,
 				50E2CEE02BE68CB60051B01D /* GenericDemo */,
 				5014F5332BE766D300A4B9BB /* Generic.xcodeproj */,
 				50E2CEDF2BE68CB60051B01D /* Products */,

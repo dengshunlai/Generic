@@ -1,5 +1,5 @@
 # Generic
-iOS App Swift 通用框架
+iOS App Swift 通用架构，助你快速搭建灵活通用的APP代码
 
 包括自定义NavigationBar，自定义Tabbar，自定义Navigation转场，自定义present转场，
 一些常用的自定义View，Layout，工具类等，
