@@ -23,15 +23,9 @@ open class BaseViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
-    
-    open func setupBase() -> Void {}
-    open func setupUI() -> Void {}
-    open func setup() -> Void {}
-    
+
     open func nc() -> NavigationController? {
         let nc = self.navigationController as? NavigationController
         return nc
@@ -40,5 +34,24 @@ open class BaseViewController: UIViewController {
     open func tc() -> TabBarController? {
         let tc = self.tabBarController as? TabBarController
         return tc
+    }
+    
+    open func initialization() {
+        setupBase()
+        setupTopBar()
+        setupUI()
+        setupOther()
+    }
+    
+    open func setupBase() -> Void {}
+    open func setupTopBar() -> Void {}
+    open func setupUI() -> Void {}
+    open func setupOther() -> Void {}
+    
+    open func refreshContent() -> Void {}
+    open func refreshSizeAndPos() -> Void {}
+    open func refresh() -> Void {
+        refreshContent()
+        refreshSizeAndPos()
     }
 }

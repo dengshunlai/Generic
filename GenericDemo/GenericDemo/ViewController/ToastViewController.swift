@@ -29,6 +29,9 @@ class ToastViewController: ProjBaseViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.white
         topBar.titleLabel.text = "ToastView"
         view.addSubview(tableView)

@@ -138,8 +138,8 @@
             filePath = "Generic/Sources/View/ToastView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "showText(text:delay:position:yOffset:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,8 +234,8 @@
             filePath = "GenericDemo/GenericDemo/View/TextCell3.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "preferredLayoutAttributesFitting(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,8 +346,8 @@
             filePath = "Generic/Sources/View/CardScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "handleItemTransformForScale(offsetX:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,8 +362,8 @@
             filePath = "Generic/Sources/View/CardScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "handleItemTransformForScale(offsetX:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,9 +378,25 @@
             filePath = "Generic/Sources/View/CardScrollView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "handleItemTransformForYRotation(offsetX:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBE040BE-D13A-41B4-BC15-C64359B99CD3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Generic/Sources/Extension/UIView+Message.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "showMessage(image:message:subMessage:buttonText:buttonClickBlock:yOffset:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

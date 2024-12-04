@@ -31,6 +31,9 @@ class TagViewController: ProjBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "TagContainerView"
         view.addSubview(tagView1)
         view.addSubview(tagView2)
@@ -141,21 +144,11 @@ class MyTagView: BaseView {
         return label
     }()
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initialization()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialization()
-    }
-    
     convenience init() {
         self.init(frame: .zero)
     }
     
-    func initialization() {
+    override func setupUI() {
         self.backgroundColor = .orange
         self.layer.cornerRadius = 15
         self.layer.masksToBounds = true

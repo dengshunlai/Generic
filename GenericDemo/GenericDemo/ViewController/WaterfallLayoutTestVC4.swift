@@ -43,6 +43,9 @@ class WaterfallLayoutTestVC4: ProjBaseViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "某些段item为0"
         
         topBar.addSubview(reloadDataBtn)

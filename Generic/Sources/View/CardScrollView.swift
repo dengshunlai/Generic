@@ -42,17 +42,7 @@ open class CardScrollView: BaseView {
     
     public var didScrollToIndex: ((CardScrollView, Int) -> Void)?
     
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initailization()
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initailization()
-    }
-    
-    func initailization() {
+    open override func setupUI() {
         backgroundColor = .clear
         clipsToBounds = true
         
@@ -72,18 +62,7 @@ open class CardScrollView: BaseView {
         scrollView.addGestureRecognizer(tap)
     }
     
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        scrollView.frame = CGRect(x: 0, y: 0, width: scrollSize.width, height: scrollSize.height)
-        scrollView.center = CGPoint(x: self.frame.width / 2.0 + itemSpacing / 2.0,
-                                    y: self.frame.height / 2.0)
-    }
-    
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: kScreenWidth, height: scrollSize.height)
-    }
-    
-    public func refresh() {
+    open override func refreshContent() {
         guard let delegate = delegate else { return }
         guard delegate.responds(to: #selector(delegate.numberOfItem(in:))) else {
             return
@@ -136,6 +115,21 @@ open class CardScrollView: BaseView {
             scrollView.contentSize = CGSize(width: scrollSize.width * Double(itemCount),
                                             height: scrollSize.height)
         }
+    }
+    
+    open override func refreshSizeAndPos() {
+        scrollView.frame = CGRect(x: 0, y: 0, width: scrollSize.width, height: scrollSize.height)
+        scrollView.center = CGPoint(x: self.frame.width / 2.0 + itemSpacing / 2.0,
+                                    y: self.frame.height / 2.0)
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        refreshSizeAndPos()
+    }
+    
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: kScreenWidth, height: scrollSize.height)
     }
     
     public func reloadData() {

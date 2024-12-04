@@ -31,21 +31,11 @@ open class ActivityIndicator: BaseView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initialization()
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialization()
-    }
-    
-    public convenience init(style: ActivityIndicatorStyle) {
-        self.init(frame: .zero)
+    public init(style: ActivityIndicatorStyle) {
+        super.init(frame: .zero)
         self.style = style
-    }
-    
-    func initialization() {
-        
     }
     
     public override func layoutSubviews() {

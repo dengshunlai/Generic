@@ -18,6 +18,7 @@ class ImgCell: BaseCollectionViewCell {
     }()
     
     override func setupUI() {
+        super.setupUI()
         backgroundColor = .clear
         contentView.backgroundColor = .white
         contentView.addSubview(iv)

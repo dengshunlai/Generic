@@ -7,33 +7,23 @@
 
 import UIKit
 
-open class NavigationBar: UIView {
+open class NavigationBar: BaseView {
     open var backBtn: UIButton!
     open var titleLabel: UILabel!
     open var bottomLine: UIView!
     open weak var vc: UIViewController?
     open var onClickBack: (() -> Bool)?
     
-    deinit {
-        DBLog("\(#function): \(type(of: self))")
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.initialization()
-    }
-    
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.initialization()
     }
     
-    public convenience init(title: String) {
-        self.init(frame: CGRect.zero)
+    public init(title: String) {
+        super.init(frame: CGRect.zero)
         titleLabel.text = title
     }
     
-    func initialization() {
+    open override func setupUI() {
         backgroundColor = UIColor.white
         self.layer.shadowOpacity = 0.1
         self.layer.shadowColor = UIColor.lightGray.cgColor

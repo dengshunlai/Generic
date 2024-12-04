@@ -50,10 +50,6 @@ class TextCell: BaseTableViewCell {
         }
     }
     
-    override func setup() {
-        
-    }
-    
     func fillCell(count: Int) -> Void {
         icon.image = UIImage(named: "Account_selected")
         var text: String = ""

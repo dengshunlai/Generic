@@ -72,16 +72,10 @@ open class TagContainerView: BaseView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initialization()
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialization()
-    }
-    
-    public convenience init(width: Double = kScreenWidth - 30.0) {
-        self.init(frame: .zero)
+    public init(width: Double = kScreenWidth - 30.0) {
+        super.init(frame: .zero)
         var width = width
         if width <= 0 {
             width = 50
@@ -89,59 +83,11 @@ open class TagContainerView: BaseView {
         option.width = width
     }
     
-    func initialization() {
+    open override func setupUI() {
         self.backgroundColor = .clear
     }
     
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        var row: Double = 0.0
-        
-        var preView: UIView?
-        var index = 0
-        for view in tagViewList {
-            var tagWidth = 0.0
-            var tagHeight = 0.0
-            if let delegate = delegate {
-                tagWidth = delegate.tagContainerView(self, tagWidthFor: index)
-                tagHeight = delegate.tagHeight(for: self)
-            } else if tags.count > 0 || attrTags.count > 0 {
-                tagWidth = view.intrinsicContentSize.width
-                tagHeight = view.intrinsicContentSize.height
-            }
-            if let preView = preView {
-                if CGRectGetMaxX(preView.frame) + option.tagItemSpacing + tagWidth <= option.width - option.edge.right {
-                    view.frame = CGRect(x: CGRectGetMaxX(preView.frame) + option.tagItemSpacing,
-                                        y: CGRectGetMinY(preView.frame),
-                                        width: tagWidth, height: tagHeight)
-                } else {
-                    row += 1
-                    view.frame = CGRect(x: option.edge.left,
-                                        y: option.edge.top + row * tagHeight + row * option.tagLineSpacing,
-                                        width: tagWidth, height: tagHeight)
-                }
-            } else {
-                view.frame = CGRect(x: option.edge.left,
-                                    y: option.edge.top,
-                                    width: tagWidth, height: tagHeight)
-            }
-            preView = view
-            index += 1
-        }
-        
-        invalidateIntrinsicContentSize()
-    }
-    
-    open override var intrinsicContentSize: CGSize {
-        if let lastTag = tagViewList.last {
-            return CGSize(width: option.width, height: CGRectGetMaxY(lastTag.frame) + option.edge.bottom)
-        } else {
-            return CGSize(width: option.width, height: 30)
-        }
-    }
-    
-    open func refresh() {
+    open override func refreshContent() {
         for view in tagViewList {
             view.removeFromSuperview()
         }
@@ -182,19 +128,68 @@ open class TagContainerView: BaseView {
         }
     }
     
+    open override func refreshSizeAndPos() {
+        var row: Double = 0.0
+        var preView: UIView?
+        var index = 0
+        for view in tagViewList {
+            var tagWidth = 0.0
+            var tagHeight = 0.0
+            if let delegate = delegate {
+                tagWidth = delegate.tagContainerView(self, tagWidthFor: index)
+                tagHeight = delegate.tagHeight(for: self)
+            } else if tags.count > 0 || attrTags.count > 0 {
+                tagWidth = view.intrinsicContentSize.width
+                tagHeight = view.intrinsicContentSize.height
+            }
+            if let preView = preView {
+                if CGRectGetMaxX(preView.frame) + option.tagItemSpacing + tagWidth <= option.width - option.edge.right {
+                    view.frame = CGRect(x: CGRectGetMaxX(preView.frame) + option.tagItemSpacing,
+                                        y: CGRectGetMinY(preView.frame),
+                                        width: tagWidth, height: tagHeight)
+                } else {
+                    row += 1
+                    view.frame = CGRect(x: option.edge.left,
+                                        y: option.edge.top + row * tagHeight + row * option.tagLineSpacing,
+                                        width: tagWidth, height: tagHeight)
+                }
+            } else {
+                view.frame = CGRect(x: option.edge.left,
+                                    y: option.edge.top,
+                                    width: tagWidth, height: tagHeight)
+            }
+            preView = view
+            index += 1
+        }
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        refreshSizeAndPos()
+        invalidateIntrinsicContentSize()
+    }
+    
+    open override var intrinsicContentSize: CGSize {
+        if let lastTag = tagViewList.last {
+            return CGSize(width: option.width, height: CGRectGetMaxY(lastTag.frame) + option.edge.bottom)
+        } else {
+            return CGSize(width: option.width, height: 30)
+        }
+    }
+    
     open func reloadData() {
         refresh()
     }
     
     @objc func clickTagView(sender: TagView) {
-        let idx = tagViewList.firstIndex(where: {$0 == sender})
+        let idx = tagViewList.firstIndex(where: {$0 === sender})
         if let idx = idx {
             self.didClickTagBlock?(idx, self)
         }
     }
     
     @objc func tapTagView(sender: UITapGestureRecognizer) {
-        let idx = tagViewList.firstIndex(where: {$0 == sender.view})
+        let idx = tagViewList.firstIndex(where: {$0 === sender.view})
         if let idx = idx, let delegate = delegate {
             delegate.tagContainerView(self, didSelected: idx)
         }
@@ -251,29 +246,29 @@ open class TagView: UIControl {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initialization()
-        refresh()
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    public init(text: String, option: TagContainerViewOption) {
+        super.init(frame: .zero)
         initialization()
-        refresh()
-    }
-    
-    public convenience init(text: String, option: TagContainerViewOption) {
-        self.init(frame: .zero)
         self.option = option
         self.label.text = text
+        refresh()
     }
     
-    public convenience init(attrText: NSAttributedString, option: TagContainerViewOption) {
-        self.init(frame: .zero)
+    public init(attrText: NSAttributedString, option: TagContainerViewOption) {
+        super.init(frame: .zero)
+        initialization()
         self.option = option
         self.label.attributedText = attrText
+        refresh()
     }
     
     func initialization() {
+        setupUI()
+    }
+    
+    func setupUI() {
         label = {
             let label = UILabel.init()
             label.textColor = UIColor.black
@@ -292,12 +287,16 @@ open class TagView: UIControl {
         ])
     }
     
-    open func refresh() {
+    open func refreshContent() {
         self.backgroundColor = option.tagBackgroundColor
         self.layer.cornerRadius = option.tagCornerRadius
         self.layer.masksToBounds = true
         self.label.font = option.tagFont
         self.label.textColor = option.tagTitleColor
+    }
+    
+    open func refresh() {
+        refreshContent()
     }
     
     open override var intrinsicContentSize: CGSize {

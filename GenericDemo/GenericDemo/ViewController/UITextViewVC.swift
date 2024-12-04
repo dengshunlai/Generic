@@ -34,6 +34,9 @@ class UITextViewVC: ProjBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "Placeholder + MaxLength"
         
         view.addSubview(textView1)

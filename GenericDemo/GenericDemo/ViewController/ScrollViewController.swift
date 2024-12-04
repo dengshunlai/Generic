@@ -20,6 +20,10 @@ class ScrollViewController: ScrollContainerVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
+        super.setupUI()
         view.backgroundColor = UIColor.white
         topBar.titleLabel.isHidden = true
         

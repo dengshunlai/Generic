@@ -68,6 +68,9 @@ open class ScrollContainerVC: BaseViewController, UICollectionViewDataSource, UI
     
     open override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    open override func setupUI() {
         view.addSubview(cv)
     }
     
@@ -135,6 +138,7 @@ open class VCItem: BaseCollectionViewCell {
     open weak var childVC: UIViewController?
     
     open override func setupUI() {
+        super.setupUI()
         bottomLine.isHidden = true
     }
     

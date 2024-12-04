@@ -23,17 +23,7 @@ open class ToastView: BaseView, CAAnimationDelegate {
     
     open var label: UILabel!
     
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initialization()
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialization()
-    }
-    
-    func initialization() {
+    open override func setupUI() {
         self.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.layer.cornerRadius = option.cornerRadius
         self.layer.masksToBounds = true

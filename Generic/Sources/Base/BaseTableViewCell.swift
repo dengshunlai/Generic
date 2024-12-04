@@ -15,21 +15,28 @@ open class BaseTableViewCell: UITableViewCell, IdentifierProtocol {
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
     
-    open func setupBase() -> Void {}
-    open func setupUI() -> Void {}
-    open func setup() -> Void {}
+    open func initialization() {
+        setupBase()
+        setupUI()
+    }
+    
+    open func setupBase() {}
+    open func setupUI() {}
+    
+    open func refreshContent() {}
+    open func refreshSizeAndPos() {}
+    open func refresh() {
+        refreshContent()
+        refreshSizeAndPos()
+    }
 }
 
 

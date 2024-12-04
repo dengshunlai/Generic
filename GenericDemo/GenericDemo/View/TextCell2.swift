@@ -27,6 +27,7 @@ class TextCell2: BaseCollectionViewCell {
     var tebleview: UITableView?
     
     override func setupUI() {
+        super.setupUI()
         leftIcon = UIImageView.init()
         leftIcon.contentMode = .scaleAspectFit
         contentView.addSubview(leftIcon)
@@ -73,10 +74,6 @@ class TextCell2: BaseCollectionViewCell {
             make.top.equalTo(label.snp.bottom).offset(5)
             make.bottom.lessThanOrEqualTo(contentView).offset(-10)
         }
-    }
-    
-    override func setup() {
-        
     }
     
     func fillCell(count: Int) -> Void {

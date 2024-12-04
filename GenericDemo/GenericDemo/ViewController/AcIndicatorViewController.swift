@@ -62,6 +62,9 @@ class AcIndicatorViewController: ProjBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.white
         topBar.titleLabel.text = "ActivityIndicator"
         topBar.titleLabel.isHidden = false

@@ -27,6 +27,9 @@ class DViewController: ProjBaseViewController, UITableViewDataSource, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.white
         topBar.titleLabel.text = "我的"
         topBar.backBtn.isHidden = true

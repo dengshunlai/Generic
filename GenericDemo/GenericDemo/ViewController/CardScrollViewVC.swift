@@ -59,6 +59,9 @@ class CardScrollViewVC: ProjBaseViewController, CardScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "CardScrollView"
         
         view.addSubview(cardScrollView1)

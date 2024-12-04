@@ -67,6 +67,9 @@ class TextGradientColorVC: ProjBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "文字渐变Label"
         
         view.layer.addSublayer(layer1)

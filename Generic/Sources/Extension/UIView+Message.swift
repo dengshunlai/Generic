@@ -116,28 +116,22 @@ public class MessageView: BaseView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initialization()
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialization()
-    }
-    
-    public convenience init(image: UIImage? = nil,
+    public init(image: UIImage? = nil,
                      text: String? = nil,
                      subText: String? = nil,
                      btnText: String? = nil,
                      buttonClickBlock: ((MessageView)->Void)? = nil) {
-        self.init(frame: .zero)
-        setMessage(image: image, 
+        super.init(frame: .zero)
+        setMessage(image: image,
                    text: text,
                    subText: subText,
                    btnText: btnText,
                    buttonClickBlock: buttonClickBlock)
     }
     
-    func initialization() {
+    public override func setupUI() {
         self.backgroundColor = .clear
         addSubview(icon)
         addSubview(textLabel)
@@ -146,10 +140,10 @@ public class MessageView: BaseView {
     }
     
     public func setMessage(image: UIImage? = nil,
-                    text: String? = nil,
-                    subText: String? = nil,
-                    btnText: String? = nil,
-                    buttonClickBlock: ((MessageView)->Void)? = nil) {
+                           text: String? = nil,
+                           subText: String? = nil,
+                           btnText: String? = nil,
+                           buttonClickBlock: ((MessageView)->Void)? = nil) {
         self.buttonClickBlock = buttonClickBlock
         if let image = image {
             icon.image = image

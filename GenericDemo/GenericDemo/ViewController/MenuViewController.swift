@@ -20,6 +20,9 @@ class MenuViewController: ProjBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.lightGray
         
         view.addSubview(dismissBtn)

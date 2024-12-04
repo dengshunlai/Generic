@@ -26,6 +26,9 @@ class NavPageLayoutVC: ProjBaseViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "NavPageLayout"
         
         view.addSubview(collectionView)
@@ -105,6 +108,7 @@ class NavIconCell: BaseCollectionViewCell {
     }()
     
     override func setupUI() {
+        super.setupUI()
         bottomLine.isHidden = true
         contentView.addSubview(icon)
         contentView.addSubview(label)

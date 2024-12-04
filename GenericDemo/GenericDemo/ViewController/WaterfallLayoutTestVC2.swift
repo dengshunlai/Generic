@@ -35,6 +35,9 @@ class WaterfallLayoutTestVC2: ProjBaseViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "header & footer & lastSection瀑布流"
         
         view.addSubview(collectionView)

@@ -14,6 +14,8 @@ class LabelCell: BaseTableViewCell {
     var label: UILabel!
     
     override func setupUI() {
+        accessoryType = .disclosureIndicator
+        
         label = {
             let label = UILabel.init()
             label.textColor = UIColor.black
@@ -29,10 +31,6 @@ class LabelCell: BaseTableViewCell {
             make.leading.equalTo(15)
             make.centerY.equalToSuperview()
         }
-    }
-    
-    override func setup() {
-        accessoryType = .disclosureIndicator
     }
     
     func fillCell(text: String) -> Void {

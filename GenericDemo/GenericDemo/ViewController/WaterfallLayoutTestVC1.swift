@@ -31,6 +31,9 @@ class WaterfallLayoutTestVC1: ProjBaseViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "sectionInset & MJRefresh"
         
         view.addSubview(collectionView)

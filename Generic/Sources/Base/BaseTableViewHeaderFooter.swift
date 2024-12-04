@@ -27,19 +27,26 @@ open class BaseTableViewHeaderFooter: UITableViewHeaderFooterView, IdentifierPro
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
     
     public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
     
-    open func setupBase() -> Void {}
-    open func setupUI() -> Void {}
-    open func setup() -> Void {}
+    open func initialization() {
+        setupBase()
+        setupUI()
+    }
+    
+    open func setupBase() {}
+    open func setupUI() {}
+    
+    open func refreshContent() {}
+    open func refreshSizeAndPos() {}
+    open func refresh() {
+        refreshContent()
+        refreshSizeAndPos()
+    }
 }

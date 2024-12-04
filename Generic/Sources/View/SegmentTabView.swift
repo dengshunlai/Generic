@@ -31,20 +31,14 @@ open class SegmentTabView: BaseView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initailization()
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initailization()
-    }
-    
-    public convenience init(tabTextList: [String]) {
-        self.init(frame: .zero)
+    public init(tabTextList: [String]) {
+        super.init(frame: .zero)
         self.tabTextList = tabTextList
     }
     
-    public func initailization() {
+    open override func setupUI() {
         self.backgroundColor = option.backgroundColor
         
         indicatorLine = {
@@ -70,7 +64,7 @@ open class SegmentTabView: BaseView {
         ])
     }
     
-    public func refresh() {
+    open override func refreshContent() {
         self.backgroundColor = option.backgroundColor
         indicatorLine.backgroundColor = option.indicatorColor
         bottomLine.backgroundColor = option.bottomLineColor
@@ -93,12 +87,10 @@ open class SegmentTabView: BaseView {
         setSelectedIdx(0, animat: false)
     }
     
-    open override func layoutSubviews() {
-        super.layoutSubviews()
+    open override func refreshSizeAndPos() {
         if btnList.count <= 0 {
             return
         }
-        
         let btnWidth = intrinsicContentSize.width / Double(btnList.count)
         
         var preBtn: UIButton?
@@ -110,6 +102,11 @@ open class SegmentTabView: BaseView {
             }
             preBtn = btn
         }
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        refreshSizeAndPos()
     }
     
     open override var intrinsicContentSize: CGSize {

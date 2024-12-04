@@ -14,6 +14,7 @@ class LabelItem: BaseCollectionViewCell {
     var label: UILabel!
     
     override func setupUI() {
+        super.setupUI()
         label = {
             let label = UILabel.init()
             label.textColor = UIColor.black
@@ -29,10 +30,6 @@ class LabelItem: BaseCollectionViewCell {
             make.leading.equalTo(15)
             make.centerY.equalToSuperview()
         }
-    }
-    
-    override func setup() {
-        
     }
     
     func fillCell(text: String) -> Void {

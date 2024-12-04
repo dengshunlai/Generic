@@ -60,6 +60,9 @@ class ViewLoadingViewController: ProjBaseViewController, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.white
         topBar.titleLabel.text = "ViewLoading"
         

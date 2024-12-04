@@ -37,7 +37,9 @@ open class TabContainerVC: BaseViewController {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    open override func setupUI() {
         self.addChild(tc)
         self.view.addSubview(tc.view)
         tc.didMove(toParent: self)

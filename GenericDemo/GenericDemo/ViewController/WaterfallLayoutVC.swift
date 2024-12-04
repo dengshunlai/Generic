@@ -25,6 +25,9 @@ class WaterfallLayoutVC: ProjBaseViewController, UICollectionViewDataSource, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "瀑布流"
         
         view.addSubview(collectionView)

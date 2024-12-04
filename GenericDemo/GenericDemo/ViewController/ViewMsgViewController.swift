@@ -49,6 +49,9 @@ class ViewMsgViewController: ProjBaseViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.white
         topBar.titleLabel.text = "ViewMessage"
         
@@ -75,7 +78,9 @@ class ViewMsgViewController: ProjBaseViewController, UITableViewDataSource, UITa
             make.trailing.equalTo(0)
             make.bottom.equalTo(0)
         }
-        
+    }
+    
+    override func setupOther() {
         requestData()
     }
     

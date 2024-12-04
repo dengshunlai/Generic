@@ -15,9 +15,26 @@ open class BaseView: UIView {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        initialization()
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        initialization()
+    }
+    
+    open func initialization() {
+        setupBase()
+        setupUI()
+    }
+    
+    open func setupBase() {}
+    open func setupUI() {}
+    
+    open func refreshContent() {}
+    open func refreshSizeAndPos() {}
+    open func refresh() {
+        refreshContent()
+        refreshSizeAndPos()
     }
 }

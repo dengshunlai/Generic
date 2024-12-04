@@ -17,19 +17,21 @@ open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setupBase()
-        setupUI()
-        setup()
+        initialization()
     }
     
-    open func setupBase() -> Void {
+    open func initialization() {
+        setupBase()
+        setupUI()
+    }
+    
+    open func setupBase() -> Void {}
+    open func setupUI() -> Void {
         bottomLine = UIView.init()
         bottomLine.backgroundColor = UIColor.lightGray.withAlphaComponent(0.7)
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +45,10 @@ open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
         ])
     }
     
-    open func setupUI() -> Void {}
-    open func setup() -> Void {}
+    open func refreshContent() -> Void {}
+    open func refreshSizeAndPos() -> Void {}
+    open func refresh() -> Void {
+        refreshContent()
+        refreshSizeAndPos()
+    }
 }

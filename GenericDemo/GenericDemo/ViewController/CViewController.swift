@@ -26,6 +26,9 @@ class CViewController: ProjBaseViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         view.backgroundColor = UIColor.white
         topBar.titleLabel.text = "购物车"
         topBar.backBtn.isHidden = true

@@ -51,6 +51,9 @@ class WaterfallLayoutTestVC3: ProjBaseViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "段头停留（吸顶）"
         
         topBar.addSubview(changeWidthBtn)

@@ -7,23 +7,13 @@
 
 import UIKit
 
-open class TabBar: UIView {
+open class TabBar: BaseView {
     
     open var itemList: Array<TabBarItem> = []
     open var onClickItem: ((Int, TabBarItem) -> Void)?
     open var topLine: UIView!
     
-    public required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        initialization()
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialization()
-    }
-    
-    func initialization() {
+    open override func setupUI() {
         self.backgroundColor = UIColor.white
         self.layer.shadowOpacity = 0.1
         self.layer.shadowColor = UIColor.lightGray.cgColor
@@ -42,9 +32,7 @@ open class TabBar: UIView {
         ])
     }
     
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    open override func refreshSizeAndPos() {
         let itemHeight = 49.0
         var itemWidth = 0.0
         var itemSpacing = 0.0
@@ -64,6 +52,11 @@ open class TabBar: UIView {
                                 width: itemWidth,
                                 height: itemHeight)
         }
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        refreshSizeAndPos()
     }
     
     open func add(item: TabBarItem) -> Void {
@@ -109,7 +102,6 @@ open class TabBarItem: UIControl {
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        initialization()
     }
     
     public init(text: String, image: UIImage, selImage: UIImage, color: UIColor, selColor: UIColor) {
@@ -125,6 +117,10 @@ open class TabBarItem: UIControl {
     }
     
     func initialization() {
+        setupUI()
+    }
+    
+    func setupUI() {
         self.backgroundColor = UIColor.clear
         
         iv = UIImageView.init()

@@ -61,6 +61,9 @@ class CircleLayoutVC: ProjBaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func setupUI() {
         topBar.titleLabel.text = "CircleLayout"
         
         view.addSubview(collectionView)
