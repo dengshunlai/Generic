@@ -28,6 +28,7 @@ open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
     open func initialization() {
         setupBase()
         setupUI()
+        setupOther()
     }
     
     open func setupBase() -> Void {}
@@ -44,6 +45,7 @@ open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
             bottomLine.heightAnchor.constraint(equalToConstant: 0.5),
         ])
     }
+    open func setupOther() {}
     
     open func refreshContent() -> Void {}
     open func refreshSizeAndPos() -> Void {}

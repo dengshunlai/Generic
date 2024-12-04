@@ -26,10 +26,12 @@ open class BaseView: UIView {
     open func initialization() {
         setupBase()
         setupUI()
+        setupOther()
     }
     
     open func setupBase() {}
     open func setupUI() {}
+    open func setupOther() {}
     
     open func refreshContent() {}
     open func refreshSizeAndPos() {}
