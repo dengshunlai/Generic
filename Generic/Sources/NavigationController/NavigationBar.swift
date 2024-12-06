@@ -8,6 +8,7 @@
 import UIKit
 
 open class NavigationBar: BaseView {
+    open var bgView: UIView!
     open var backBtn: UIButton!
     open var titleLabel: UILabel!
     open var bottomLine: UIView!
@@ -30,23 +31,35 @@ open class NavigationBar: BaseView {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = 3
         
+        bgView = UIView()
+        bgView.backgroundColor = .white
+        bgView.translatesAutoresizingMaskIntoConstraints = false
+        
         backBtn = UIButton.init(type: .custom)
         backBtn.setImage(UIImage.init(named: "back", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
         backBtn.imageView?.contentMode = .scaleAspectFit
         backBtn.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(backBtn)
         
         titleLabel = UILabel.init()
         titleLabel.textColor = UIColor.generic.hexColor("333333")
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLabel)
         
         bottomLine = UIView.init()
         bottomLine.backgroundColor = UIColor.generic.hexColor("efefef")
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(bgView)
+        addSubview(backBtn)
+        addSubview(titleLabel)
         addSubview(bottomLine)
         
+        NSLayoutConstraint.activate([
+            bgView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bgView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bgView.topAnchor.constraint(equalTo: self.topAnchor),
+            bgView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
         NSLayoutConstraint.activate([
             backBtn.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             backBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
@@ -63,7 +76,9 @@ open class NavigationBar: BaseView {
             bottomLine.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             bottomLine.heightAnchor.constraint(equalToConstant: 1),
         ])
-        
+    }
+    
+    open override func setupOther() {
         backBtn.addTarget(self, action: #selector(clickBackBtn(sender:)), for: .touchUpInside)
     }
     
