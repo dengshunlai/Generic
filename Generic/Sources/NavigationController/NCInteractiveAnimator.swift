@@ -46,7 +46,7 @@ extension NCInteractiveAnimator: UINavigationControllerDelegate {
         let root = navigationController.viewControllers.first
         let tabBarTC = navigationController.generic.tabBarController()
         if let tc = tabBarTC {
-            if viewController != root {
+            if viewController !== root {
                 tc.aTabBar.removeFromSuperview()
                 root?.view.addSubview(tc.aTabBar)
             }
@@ -57,7 +57,7 @@ extension NCInteractiveAnimator: UINavigationControllerDelegate {
         let root = navigationController.viewControllers.first
         let tabBarTC = navigationController.generic.tabBarController()
         if let tc = tabBarTC {
-            if root == viewController {
+            if viewController === root {
                 tc.aTabBar.removeFromSuperview()
                 tc.view.addSubview(tc.aTabBar)
             }
