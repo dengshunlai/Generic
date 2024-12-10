@@ -86,7 +86,7 @@ open class Utils {
     }
     
     public static func topViewController() -> UIViewController? {
-        var vc = UIApplication.shared.keyWindow?.rootViewController
+        let vc = UIApplication.shared.keyWindow?.rootViewController
         let topVC = findNextViewControllerFrom(vc: vc)
         return topVC
     }
