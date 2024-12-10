@@ -24,6 +24,7 @@
 		5025C4B82BE91FA000963BD8 /* CodeStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4B72BE91FA000963BD8 /* CodeStore.swift */; };
 		5025C4BB2BE9E91000963BD8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4BA2BE9E91000963BD8 /* BaseViewController.swift */; };
 		5025C4BD2BEA15C600963BD8 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4BC2BEA15C600963BD8 /* BaseCollectionViewCell.swift */; };
+		5040EFE62D07EDE100CC2F52 /* String+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040EFE52D07EDE100CC2F52 /* String+Generic.swift */; };
 		504C35C42D0155460021896D /* UIImage+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C35C32D0155460021896D /* UIImage+Generic.swift */; };
 		5085E5592C376CCD00582E8B /* TextGradientColorLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5085E5582C376CCD00582E8B /* TextGradientColorLayer.swift */; };
 		509928272C3A4FDD00CA0223 /* CardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509928262C3A4FDD00CA0223 /* CardScrollView.swift */; };
@@ -64,6 +65,7 @@
 		5025C4B72BE91FA000963BD8 /* CodeStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeStore.swift; sourceTree = "<group>"; };
 		5025C4BA2BE9E91000963BD8 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5025C4BC2BEA15C600963BD8 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		5040EFE52D07EDE100CC2F52 /* String+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Generic.swift"; sourceTree = "<group>"; };
 		504C35C32D0155460021896D /* UIImage+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Generic.swift"; sourceTree = "<group>"; };
 		5085E5582C376CCD00582E8B /* TextGradientColorLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGradientColorLayer.swift; sourceTree = "<group>"; };
 		509928262C3A4FDD00CA0223 /* CardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScrollView.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				50D472E92C0D3B9E0056751D /* UIView+Loading.swift */,
 				502446FD2C38F7E500ACAC2F /* UITextView+Generic.swift */,
 				504C35C32D0155460021896D /* UIImage+Generic.swift */,
+				5040EFE52D07EDE100CC2F52 /* String+Generic.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				5025C4B02BE8F11100963BD8 /* IdentifierProtocol.swift in Sources */,
 				50FD34BF2C1B382E00072BA3 /* CircleLayout.swift in Sources */,
 				50D472EA2C0D3B9E0056751D /* UIView+Loading.swift in Sources */,
+				5040EFE62D07EDE100CC2F52 /* String+Generic.swift in Sources */,
 				50EA48A92BFE382E0001F0F8 /* TabContainerVC.swift in Sources */,
 				50FD34AB2C18976400072BA3 /* NavPageLayout.swift in Sources */,
 				50F0FAA72C207C66000519FA /* WaterfallLayout.swift in Sources */,
