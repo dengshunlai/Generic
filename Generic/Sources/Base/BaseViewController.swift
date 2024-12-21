@@ -20,6 +20,16 @@ open class BaseViewController: UIViewController {
         DBLog("\(#function): \(type(of: self))")
     }
     
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupBase()
+    }
+    
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setupBase()
+    }
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -37,7 +47,6 @@ open class BaseViewController: UIViewController {
     }
     
     open func initialization() {
-        setupBase()
         setupTopBar()
         setupUI()
         setupOther()
