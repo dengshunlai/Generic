@@ -238,7 +238,7 @@ open class TagView: UIControl {
 
     open var label: UILabel!
 
-    open var option: TagContainerViewOption = TagContainerViewOption() {
+    open var option = TagContainerViewOption() {
         didSet {
             refresh()
         }

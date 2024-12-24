@@ -49,6 +49,9 @@ open class BaseViewController: UIViewController {
     open func initialization() {
         setupTopBar()
         setupUI()
+        if let topBar = self.generic.navigationBar() {
+            self.view.bringSubviewToFront(topBar)
+        }
         setupOther()
     }
     

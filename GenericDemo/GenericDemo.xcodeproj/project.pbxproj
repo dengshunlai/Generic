@@ -27,6 +27,7 @@
 		5025C4AE2BE8EDF600963BD8 /* Generic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5014F5382BE766D300A4B9BB /* Generic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5025C4B42BE9043900963BD8 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4B32BE9043900963BD8 /* TextCell.swift */; };
 		5025C4BF2BEA168E00963BD8 /* TextCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025C4BE2BEA168E00963BD8 /* TextCell2.swift */; };
+		5042C1752D1AE5E2000FA74D /* PhotoBrowseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5042C1742D1AE5E2000FA74D /* PhotoBrowseVC.swift */; };
 		50561EB72C3936C700292E3C /* UITextViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50561EB62C3936C700292E3C /* UITextViewVC.swift */; };
 		506926892CE8E18000E9A82B /* PopCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506926882CE8E18000E9A82B /* PopCallbackVC.swift */; };
 		506F132E2BEA6F20004FEA32 /* SwiftyJSON.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506F132C2BEA6F20004FEA32 /* SwiftyJSON.xcframework */; };
@@ -118,6 +119,7 @@
 		50192B3B2C2B0DB3007C095F /* ImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgCell.swift; sourceTree = "<group>"; };
 		5025C4B32BE9043900963BD8 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		5025C4BE2BEA168E00963BD8 /* TextCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell2.swift; sourceTree = "<group>"; };
+		5042C1742D1AE5E2000FA74D /* PhotoBrowseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBrowseVC.swift; sourceTree = "<group>"; };
 		504C35AA2D00A4AC0021896D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		504C35AB2D00A4B40021896D /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		50561EB62C3936C700292E3C /* UITextViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewVC.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				50561EB62C3936C700292E3C /* UITextViewVC.swift */,
 				509928282C3A8F1400CA0223 /* CardScrollViewVC.swift */,
 				506926882CE8E18000E9A82B /* PopCallbackVC.swift */,
+				5042C1742D1AE5E2000FA74D /* PhotoBrowseVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				5014F5742BE89AE700A4B9BB /* NextViewController.swift in Sources */,
 				5014F5722BE89AD800A4B9BB /* DViewController.swift in Sources */,
 				50B2BC8B2C0B4AB70057FCB2 /* ToastViewController.swift in Sources */,
+				5042C1752D1AE5E2000FA74D /* PhotoBrowseVC.swift in Sources */,
 				5099282B2C3AE3DB00CA0223 /* CardView.swift in Sources */,
 				50EA48A72BFE2D6D0001F0F8 /* PicViewController.swift in Sources */,
 				5015879D2C29BEBD000BFB04 /* CollectionFooter.swift in Sources */,

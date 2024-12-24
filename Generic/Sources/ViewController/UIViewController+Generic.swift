@@ -32,7 +32,6 @@ public extension GenericNameSpace where T: UIViewController {
         }
         bar = NavigationBar(title: title)
         bar!.vc = obj
-        bar!.layer.zPosition = 100
         obj.view.addSubview(bar!)
         bar?.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
