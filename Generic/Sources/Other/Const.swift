@@ -14,7 +14,7 @@ public let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 public let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 public func DBLog(_ items: Any..., separator: String = " ", terminator: String = "\n") -> Void {
-    #if DEBUG
-        print(items, separator: separator, terminator: terminator)
-    #endif
+#if DEBUG
+    print(items, separator: separator, terminator: terminator)
+#endif
 }
