@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -108,7 +108,7 @@
 		5014F5332BE766D300A4B9BB /* Generic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Generic.xcodeproj; path = ../Generic/Generic.xcodeproj; sourceTree = "<group>"; };
 		5014F5462BE78A5D00A4B9BB /* BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BViewController.swift; sourceTree = "<group>"; };
 		5014F5482BE7950800A4B9BB /* CViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CViewController.swift; sourceTree = "<group>"; };
-		5014F5552BE7A33400A4B9BB /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = ../Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
+		5014F5552BE7A33400A4B9BB /* Kingfisher.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:A4YJ9MRZ66:Wei Wang"; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = ../Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
 		5014F5712BE89AD800A4B9BB /* DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DViewController.swift; sourceTree = "<group>"; };
 		5014F5732BE89AE700A4B9BB /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 		501587932C29B431000BFB04 /* WaterfallLayoutTestVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayoutTestVC2.swift; sourceTree = "<group>"; };

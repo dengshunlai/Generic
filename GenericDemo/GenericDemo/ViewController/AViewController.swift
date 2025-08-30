@@ -61,6 +61,8 @@ class AViewController: ProjBaseViewController, UITableViewDataSource, UITableVie
         tempTextCell.fillCell(count: indexPath.row + 1)
         let height = tempTextCell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         return height
+        //用这个也行，要设置estimatedRowHeight
+        //return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

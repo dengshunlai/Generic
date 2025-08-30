@@ -24,7 +24,7 @@ open class TabBarController: UITabBarController {
         self.initialization()
     }
     
-    convenience init() {
+    public convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
     
