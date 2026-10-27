@@ -65,9 +65,10 @@ open class ActivityIndicator: BaseView {
             addSubview(systemIndicator)
             systemIndicator.startAnimating()
         } else {
-            indicatorLayer?.removeFromSuperlayer()
-            indicatorLayer = indicatorLayer(with: style)
-            self.layer.addSublayer(indicatorLayer!)
+            self.indicatorLayer?.removeFromSuperlayer()
+            let indicatorLayer = indicatorLayer(with: style)
+            self.indicatorLayer = indicatorLayer
+            self.layer.addSublayer(indicatorLayer)
         }
     }
     

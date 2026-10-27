@@ -11,7 +11,13 @@ open class TabBar: BaseView {
     
     open var itemList: Array<TabBarItem> = []
     open var onClickItem: ((Int, TabBarItem) -> Void)?
-    open var topLine: UIView!
+    
+    public private(set) lazy var topLine = {
+        let view = UIView.init()
+        view.backgroundColor = UIColor.generic.hexColor("e4e4e4")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     open override func setupUI() {
         self.backgroundColor = UIColor.white
@@ -19,9 +25,6 @@ open class TabBar: BaseView {
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: -2)
         
-        topLine = UIView.init()
-        topLine.backgroundColor = UIColor.generic.hexColor("e4e4e4")
-        topLine.translatesAutoresizingMaskIntoConstraints = false
         addSubview(topLine)
         
         NSLayoutConstraint.activate([
@@ -74,21 +77,52 @@ open class TabBar: BaseView {
         }
         sender.isSel = true
         if let block = onClickItem {
-            let idx = itemList.firstIndex(of: sender)
-            block(idx!, sender)
+            if let idx = itemList.firstIndex(of: sender) {
+                block(idx, sender)
+            }
         }
     }
 }
 
 open class TabBarItem: UIControl {
     
-    open var iv :UIImageView!
-    open var label: UILabel!
-    open var image: UIImage!
-    open var selImage: UIImage!
-    open var color: UIColor!
-    open var selColor: UIColor!
-    open var isSel: Bool = false {
+    public private(set) lazy var iv = {
+        let view = UIImageView.init()
+        view.contentMode = .scaleAspectFit
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    public private(set) lazy var label = {
+        let label = UILabel.init()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    public private(set) var badgeLabel = {
+        let label = UILabel.init()
+        label.textColor = UIColor.white
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.generic.hexColor("DF4040")
+        label.layer.cornerRadius = 7
+        label.layer.masksToBounds = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    public var badgeOffset = CGPoint(x: 13, y: -15)
+    public lazy var badgeWidthConstraint = badgeLabel.widthAnchor.constraint(equalToConstant: 20)
+    
+    public private(set) var image: UIImage?
+    public private(set) var selImage: UIImage?
+    public private(set) var color: UIColor?
+    public private(set) var selColor: UIColor?
+    
+    public var isSel: Bool = false {
         didSet {
             if isSel {
                 iv.image = selImage
@@ -104,16 +138,18 @@ open class TabBarItem: UIControl {
         super.init(coder: coder)
     }
     
-    public init(text: String, image: UIImage, selImage: UIImage, color: UIColor, selColor: UIColor) {
-        super.init(frame: .zero)
-        initialization()
-        self.label.text = text
+    public init(text: String?, image: UIImage?, selImage: UIImage?, color: UIColor?, selColor: UIColor?) {
         self.image = image
         self.selImage = selImage
         self.color = color
         self.selColor = selColor
-        iv.image = image
-        label.textColor = color
+        
+        super.init(frame: .zero)
+        
+        self.initialization()
+        self.label.text = text
+        self.label.textColor = color
+        self.iv.image = image
     }
     
     func initialization() {
@@ -123,18 +159,9 @@ open class TabBarItem: UIControl {
     func setupUI() {
         self.backgroundColor = UIColor.clear
         
-        iv = UIImageView.init()
-        iv.contentMode = .scaleAspectFit
-        iv.translatesAutoresizingMaskIntoConstraints = false
         addSubview(iv)
-        
-        label = UILabel.init()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.numberOfLines = 1
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
+        addSubview(badgeLabel)
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -143,10 +170,33 @@ open class TabBarItem: UIControl {
         ])
         NSLayoutConstraint.activate([
             iv.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            iv.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
+            iv.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             iv.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             iv.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-            iv.heightAnchor.constraint(equalToConstant: 30)
+            iv.heightAnchor.constraint(equalToConstant: 22)
         ])
+        NSLayoutConstraint.activate([
+            badgeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: badgeOffset.x),
+            badgeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: badgeOffset.y),
+            badgeLabel.heightAnchor.constraint(equalToConstant: 14),
+            badgeWidthConstraint
+        ])
+        
+        badgeLabel.isHidden = true
+    }
+    
+    public func setBadge(_ text: String?) {
+        badgeLabel.text = text
+        
+        if text?.count ?? 0 > 0 {
+            var width = 14.0
+            if text?.count ?? 0 > 1 {
+                width = badgeLabel.sizeThatFits(UIView.layoutFittingCompressedSize).width + 8.0
+            }
+            badgeWidthConstraint.constant = width
+            badgeLabel.isHidden = false
+        } else {
+            badgeLabel.isHidden = true
+        }
     }
 }

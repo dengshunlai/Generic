@@ -11,19 +11,17 @@ import SnapKit
 
 class LabelCell: BaseTableViewCell {
     
-    var label: UILabel!
+    lazy var label: UILabel = {
+        let label = UILabel.init()
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        return label
+    }()
     
     override func setupUI() {
         accessoryType = .disclosureIndicator
-        
-        label = {
-            let label = UILabel.init()
-            label.textColor = UIColor.black
-            label.font = UIFont.systemFont(ofSize: 15)
-            label.numberOfLines = 1
-            label.textAlignment = .left
-            return label
-        }()
         
         contentView.addSubview(label)
         

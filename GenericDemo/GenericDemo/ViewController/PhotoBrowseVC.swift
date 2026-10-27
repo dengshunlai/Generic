@@ -39,10 +39,10 @@ class PhotoBrowseVC: ProjBaseViewController {
     @objc func clickBtn() {
         let view = PhotoBrowseView()
         view.imageList = [
-            UIImage(named: "cat1")!,
-            UIImage(named: "cat2")!,
-            UIImage(named: "cat3")!,
-            UIImage(named: "sky")!,
+            .cat1,
+            .cat2,
+            .cat3,
+            .sky,
         ]
         view.showIn(self.view)
     }

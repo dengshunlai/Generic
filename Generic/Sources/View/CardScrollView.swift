@@ -34,7 +34,16 @@ open class CardScrollView: BaseView {
     
     public var isLoop = false
     
-    public var scrollView: UIScrollView!
+    public private(set) lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView.init()
+        sv.showsVerticalScrollIndicator = false
+        sv.showsHorizontalScrollIndicator = false
+        sv.isPagingEnabled = true
+        sv.clipsToBounds = false
+        sv.backgroundColor = .clear
+        sv.delegate = self
+        return sv
+    }()
     
     public weak var delegate: (any CardScrollViewDelegate)?
     
@@ -46,16 +55,6 @@ open class CardScrollView: BaseView {
         backgroundColor = .clear
         clipsToBounds = true
         
-        scrollView = {
-            let sv = UIScrollView.init()
-            sv.showsVerticalScrollIndicator = false
-            sv.showsHorizontalScrollIndicator = false
-            sv.isPagingEnabled = true
-            sv.clipsToBounds = false
-            sv.backgroundColor = .clear
-            sv.delegate = self
-            return sv
-        }()
         addSubview(scrollView)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(tap:)))
@@ -95,10 +94,14 @@ open class CardScrollView: BaseView {
             }
             scrollView.addSubview(itemBegin)
             scrollView.addSubview(itemEnd1)
-            scrollView.addSubview(itemEnd2!)
+            if let itemEnd2 = itemEnd2 {
+                scrollView.addSubview(itemEnd2)
+            }
             itemList.insert(itemBegin, at: 0)
             itemList.append(itemEnd1)
-            itemList.append(itemEnd2!)
+            if let itemEnd2 = itemEnd2 {
+                itemList.append(itemEnd2)
+            }
         }
         
         for i in 0..<itemList.count {
@@ -152,10 +155,10 @@ open class CardScrollView: BaseView {
     }
     
     public func getItemLogicIndex(item: UIView) -> Int {
-        guard itemList.contains(where: {$0 === item}) else {
+        guard let itemIdx = itemList.firstIndex(of: item) else {
             return -1
         }
-        let index = itemList.firstIndex(of: item)! - itemList.startIndex
+        let index = itemIdx - itemList.startIndex
         let logicIndex = indexToLogicIndex(index: index)
         return logicIndex
     }
@@ -202,8 +205,8 @@ extension CardScrollView {
                 break
             }
         }
-        if let tapItem = tapItem {
-            let index = itemList.firstIndex(of: tapItem)! - itemList.startIndex
+        if let tapItem = tapItem, let itemIdx = itemList.firstIndex(of: tapItem) {
+            let index = itemIdx - itemList.startIndex
             let logicIndex = indexToLogicIndex(index: index)
             delegate.cardScrollView(self, didSelectedIndex: logicIndex)
         }

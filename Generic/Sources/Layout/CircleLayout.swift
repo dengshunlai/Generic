@@ -79,8 +79,9 @@ open class CircleLayout: UICollectionViewLayout {
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributes = [UICollectionViewLayoutAttributes]()
         for idx in 0..<cellCount {
-            let attr = layoutAttributesForItem(at: IndexPath(row: idx, section: 0))!
-            attributes.append(attr)
+            if let attr = layoutAttributesForItem(at: IndexPath(row: idx, section: 0)) {
+                attributes.append(attr)
+            }
         }
         return attributes
     }
@@ -143,7 +144,7 @@ open class CircleLayout: UICollectionViewLayout {
         isRotating = true
         
         if let delegate = collectionView.delegate as? UICollectionViewDelegateCircleLayout {
-            delegate.collectionView?(self.collectionView!, layout: self, isBeginRotation: true)
+            delegate.collectionView?(collectionView, layout: self, isBeginRotation: true)
         }
     }
 }
@@ -155,8 +156,8 @@ extension CircleLayout: CAAnimationDelegate {
             if rotationPerAngle > 0 {
                 selectedIndex = cellCount - lround((rotationToAngle.truncatingRemainder(dividingBy: (2 * Double.pi))) / rotationPerAngle)
             }
-            if let delegate = collectionView?.delegate as? UICollectionViewDelegateCircleLayout {
-                delegate.collectionView?(self.collectionView!, layout: self, isEndRotation: true)
+            if let delegate = collectionView?.delegate as? UICollectionViewDelegateCircleLayout, let collectionView = collectionView {
+                delegate.collectionView?(collectionView, layout: self, isEndRotation: true)
             }
         }
     }

@@ -74,8 +74,7 @@ extension NCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: any UIViewControllerContextTransitioning) {
-        let fromView = transitionContext.view(forKey: .from)!
-        let toView = transitionContext.view(forKey: .to)!
+        guard let fromView = transitionContext.view(forKey: .from), let toView = transitionContext.view(forKey: .to) else { return }
         let contentView = transitionContext.containerView
         
         if nc?.type == 0 {

@@ -54,16 +54,17 @@ private var msgViewKey: Void?
 public extension GenericNameSpace where T: UIView {
     
     func msgView() -> MessageView {
-        var view = objc_getAssociatedObject(obj, &msgViewKey) as? MessageView
-        if view == nil {
-            view = MessageView()
-            view?.backgroundColor = UIColor.clear
-            view?.translatesAutoresizingMaskIntoConstraints = false
-            obj.addSubview(view!)
-            view?.isHidden = true
-            setMsgView(view: view!)
+        if let view = objc_getAssociatedObject(obj, &msgViewKey) as? MessageView {
+            return view
+        } else {
+            let view = MessageView()
+            view.backgroundColor = UIColor.clear
+            view.translatesAutoresizingMaskIntoConstraints = false
+            obj.addSubview(view)
+            view.isHidden = true
+            setMsgView(view: view)
+            return view
         }
-        return view!
     }
     
     func setMsgView(view: MessageView) {

@@ -270,7 +270,7 @@ open class WaterfallLayout: UICollectionViewLayout {
         if indexPath.section > sectionItemAttributes.count {
             return nil
         }
-        let sectionAttrsList = sectionItemAttributes[indexPath.section]!
+        let sectionAttrsList = sectionItemAttributes[indexPath.section] ?? []
         if indexPath.row > sectionAttrsList.count {
             return nil
         }
@@ -360,7 +360,7 @@ open class WaterfallLayout: UICollectionViewLayout {
             return
         }
         guard let columnMaxY = columnMaxY[section].first else { return }
-        let attrs = headersAttribute[section]!
+        guard let attrs = headersAttribute[section] else { return }
         let frame = attrs.frame
         if newBounds.origin.y < columnMaxY - frame.size.height {
             attrs.frame = CGRect(x: frame.origin.x, y: newBounds.origin.y, width: frame.width, height: frame.height)
@@ -420,7 +420,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:sizeForItemAt:))) {
-            size = delegate.collectionView!(collectionView, layout: self, sizeForItemAt: indexPath)
+            size = delegate.collectionView?(collectionView, layout: self, sizeForItemAt: indexPath) ?? .zero
         } else {
             size = itemSize
         }
@@ -432,7 +432,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:columnCountForSection:))) {
-            count = delegate.collectionView!(collectionView, layout: self, columnCountForSection: section)
+            count = delegate.collectionView?(collectionView, layout: self, columnCountForSection: section) ?? 0
         } else {
             count = columnCount
         }
@@ -444,7 +444,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:heightForHeaderInSection:))) {
-            height = delegate.collectionView!(collectionView, layout: self, heightForHeaderInSection: section)
+            height = delegate.collectionView?(collectionView, layout: self, heightForHeaderInSection: section) ?? 0.0
         } else {
             height = headerHeight
         }
@@ -456,7 +456,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:heightForFooterInSection:))) {
-            height = delegate.collectionView!(collectionView, layout: self, heightForFooterInSection: section)
+            height = delegate.collectionView?(collectionView, layout: self, heightForFooterInSection: section) ?? 0.0
         } else {
             height = footerHeight
         }
@@ -468,7 +468,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:insetForSection:))) {
-            edge = delegate.collectionView!(collectionView, layout: self, insetForSection: section)
+            edge = delegate.collectionView?(collectionView, layout: self, insetForSection: section) ?? .zero
         } else {
             edge = sectionInset
         }
@@ -480,7 +480,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:insetForHeaderInSection:))) {
-            edge = delegate.collectionView!(collectionView, layout: self, insetForHeaderInSection: section)
+            edge = delegate.collectionView?(collectionView, layout: self, insetForHeaderInSection: section) ?? .zero
         } else {
             edge = headerInset
         }
@@ -492,7 +492,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:insetForFooterInSection:))) {
-            edge = delegate.collectionView!(collectionView, layout: self, insetForFooterInSection: section)
+            edge = delegate.collectionView?(collectionView, layout: self, insetForFooterInSection: section) ?? .zero
         } else {
             edge = footerInset
         }
@@ -504,7 +504,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:columnSpacingForSection:))) {
-            spacing = delegate.collectionView!(collectionView, layout: self, columnSpacingForSection: section)
+            spacing = delegate.collectionView?(collectionView, layout: self, columnSpacingForSection: section) ?? 0.0
         } else {
             spacing = columnSpacing
         }
@@ -516,7 +516,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
             delegate.responds(to: #selector(delegate.collectionView(_:layout:lineSpacingForSection:))) {
-            spacing = delegate.collectionView!(collectionView, layout: self, lineSpacingForSection: section)
+            spacing = delegate.collectionView?(collectionView, layout: self, lineSpacingForSection: section) ?? 0.0
         } else {
             spacing = lineSpacing
         }
@@ -528,7 +528,7 @@ extension WaterfallLayout {
         if let delegate = delegate,
            let collectionView = collectionView,
            delegate.responds(to: #selector(delegate.headerFloatForSections(_:layout:))) {
-            sections = delegate.headerFloatForSections!(collectionView, layout: self)
+            sections = delegate.headerFloatForSections?(collectionView, layout: self) ?? []
         } else {
             sections = []
         }

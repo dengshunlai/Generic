@@ -8,10 +8,34 @@
 import UIKit
 
 open class NavigationBar: BaseView {
-    open var bgView: UIView!
-    open var backBtn: UIButton!
-    open var titleLabel: UILabel!
-    open var bottomLine: UIView!
+    
+    public private(set) lazy var bgView: UIView = {
+        let bgView = UIView()
+        bgView.backgroundColor = .white
+        bgView.translatesAutoresizingMaskIntoConstraints = false
+        return bgView
+    }()
+    public private(set) lazy var backBtn: UIButton = {
+        let backBtn = UIButton.init(type: .custom)
+        backBtn.setImage(UIImage.init(named: "back", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        backBtn.imageView?.contentMode = .scaleAspectFit
+        backBtn.translatesAutoresizingMaskIntoConstraints = false
+        return backBtn
+    }()
+    public private(set) lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel.init()
+        titleLabel.textColor = UIColor.generic.hexColor("333333")
+        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        return titleLabel
+    }()
+    public private(set) lazy var bottomLine: UIView = {
+        let bottomLine = UIView.init()
+        bottomLine.backgroundColor = UIColor.generic.hexColor("efefef")
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        return bottomLine
+    }()
+    
     open weak var vc: UIViewController?
     open var onClickBack: (() -> Bool)?
     
@@ -30,24 +54,6 @@ open class NavigationBar: BaseView {
         self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = 3
-        
-        bgView = UIView()
-        bgView.backgroundColor = .white
-        bgView.translatesAutoresizingMaskIntoConstraints = false
-        
-        backBtn = UIButton.init(type: .custom)
-        backBtn.setImage(UIImage.init(named: "back", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
-        backBtn.imageView?.contentMode = .scaleAspectFit
-        backBtn.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel = UILabel.init()
-        titleLabel.textColor = UIColor.generic.hexColor("333333")
-        titleLabel.font = UIFont.systemFont(ofSize: 18)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        bottomLine = UIView.init()
-        bottomLine.backgroundColor = UIColor.generic.hexColor("efefef")
-        bottomLine.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(bgView)
         addSubview(backBtn)

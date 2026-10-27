@@ -56,15 +56,16 @@ private var indicatorViewConstraintsKey: Void?
 public extension GenericNameSpace where T: UIView {
     
     func indicatorView() -> ActivityIndicator {
-        var view = objc_getAssociatedObject(obj, &indicatorViewKey) as? ActivityIndicator
-        if view == nil {
-            view = ActivityIndicator(style: .style_0)
-            view?.translatesAutoresizingMaskIntoConstraints = false
-            obj.addSubview(view!)
-            view?.isHidden = true
-            setIndicatorView(view: view!)
+        if let view = objc_getAssociatedObject(obj, &indicatorViewKey) as? ActivityIndicator {
+            return view
+        } else {
+            let view = ActivityIndicator(style: .style_0)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            obj.addSubview(view)
+            view.isHidden = true
+            setIndicatorView(view: view)
+            return view
         }
-        return view!
     }
     
     func setIndicatorView(view: ActivityIndicator) {

@@ -9,8 +9,16 @@ import UIKit
 
 open class NavigationController: UINavigationController {
     open var type = 0
-    var animator: NCInteractiveAnimator!
-    var edgePan: UIScreenEdgePanGestureRecognizer!
+    
+    private(set) lazy var animator: NCInteractiveAnimator = NCInteractiveAnimator.init(nc: self)
+    
+    public private(set) lazy var edgePan: UIScreenEdgePanGestureRecognizer = {
+        let edgePan = UIScreenEdgePanGestureRecognizer.init(target: self, action: #selector(panPop(sender:)))
+        edgePan.edges = .left
+        edgePan.delegate = self
+        return edgePan
+    }()
+    
     var popingViewController: UIViewController?
     
     public required init?(coder aDecoder: NSCoder) {
@@ -24,14 +32,10 @@ open class NavigationController: UINavigationController {
     }
     
     func initialization() {
-        animator = NCInteractiveAnimator.init(nc: self)
         self.isNavigationBarHidden = true
         self.interactivePopGestureRecognizer?.isEnabled = false
         self.delegate = animator
         
-        edgePan = UIScreenEdgePanGestureRecognizer.init(target: self, action: #selector(panPop(sender:)))
-        edgePan.edges = .left
-        edgePan.delegate = self
         view.addGestureRecognizer(edgePan)
     }
     

@@ -26,21 +26,19 @@ public extension GenericNameSpace where T: UIViewController {
     
     @discardableResult
     func makeNavigationBar(title: String) -> NavigationBar {
-        var bar = navigationBar()
-        if bar != nil {
-            return bar!
+        if let bar = navigationBar() {
+            return bar
         }
-        bar = NavigationBar(title: title)
-        bar!.vc = obj
-        obj.view.addSubview(bar!)
-        bar?.translatesAutoresizingMaskIntoConstraints = false
+        let bar = NavigationBar(title: title)
+        bar.vc = obj
+        obj.view.addSubview(bar)
+        bar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bar!.topAnchor.constraint(equalTo: obj.view.topAnchor, constant: 0),
-            bar!.centerXAnchor.constraint(equalTo: obj.view.centerXAnchor),
+            bar.topAnchor.constraint(equalTo: obj.view.topAnchor, constant: 0),
+            bar.centerXAnchor.constraint(equalTo: obj.view.centerXAnchor),
         ])
-        
         objc_setAssociatedObject(obj, &navigationBarKey, bar, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        return bar!
+        return bar
     }
     
     func navigationController() -> NavigationController? {

@@ -9,7 +9,12 @@ import UIKit
 
 open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
     
-    open var bottomLine: UIView!
+    public private(set) lazy var bottomLine: UIView = {
+        let bottomLine = UIView.init()
+        bottomLine.backgroundColor = UIColor.lightGray.withAlphaComponent(0.7)
+        bottomLine.translatesAutoresizingMaskIntoConstraints = false
+        return bottomLine
+    }()
     
     deinit {
         DBLog("\(#function): \(type(of: self))")
@@ -33,9 +38,6 @@ open class BaseCollectionViewCell: UICollectionViewCell, IdentifierProtocol {
     
     open func setupBase() -> Void {}
     open func setupUI() -> Void {
-        bottomLine = UIView.init()
-        bottomLine.backgroundColor = UIColor.lightGray.withAlphaComponent(0.7)
-        bottomLine.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(bottomLine)
         
         NSLayoutConstraint.activate([

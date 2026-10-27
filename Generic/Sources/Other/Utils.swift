@@ -14,7 +14,7 @@ open class Utils {
     public static func safeAreaTop() -> CGFloat {
         var num: CGFloat = 0.0
         if #available(iOS 11, *) {
-            num = UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+            num = activeWindow()?.safeAreaInsets.top ?? 0
         } else {
             num = UIApplication.shared.statusBarFrame.size.height
         }
@@ -24,7 +24,7 @@ open class Utils {
     public static func safeAreaBottom() -> CGFloat {
         var num: CGFloat = 0.0
         if #available(iOS 11, *) {
-            num = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            num = activeWindow()?.safeAreaInsets.bottom ?? 0
         } else {
             
         }
@@ -53,18 +53,35 @@ open class Utils {
         blackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         acIndicator.center = CGPoint(x: blackView.frame.width / 2, y: blackView.frame.height / 2)
         
-        UIApplication.shared.keyWindow?.addSubview(blackView)
+        getKeyWindow()?.addSubview(blackView)
     }
     
     public static func removeLoading() {
-        let view = UIApplication.shared.keyWindow?.viewWithTag(loadingViewTag)
+        let view = getKeyWindow()?.viewWithTag(loadingViewTag)
         if let view = view {
             view.removeFromSuperview()
         }
     }
     
+    public static func activeWindow() -> UIWindow? {
+        if #available(iOS 13.0, *) {
+            let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+            let activeScene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
+            guard let scene = activeScene else { return nil }
+            // 1. 优先 normal 层级的正常窗口中的 keyWindow
+            let candidateWindows = scene.windows.filter { !$0.isHidden && $0.windowLevel == .normal }
+            // 2. 防御性降级：过滤过严时放宽到该场景内任意 keyWindow / 任意 window
+            return candidateWindows.first { $0.isKeyWindow }
+                ?? candidateWindows.first
+                ?? scene.windows.first { $0.isKeyWindow }
+                ?? scene.windows.first
+        } else {
+            return UIApplication.shared.keyWindow
+        }
+    }
+    
     public static func getKeyWindow() -> UIWindow? {
-        return UIApplication.shared.keyWindow
+        return UIApplication.shared.windows.filter({$0.isKeyWindow}).first
     }
     
     public static func getTopWindow() -> UIWindow? {
@@ -86,7 +103,7 @@ open class Utils {
     }
     
     public static func topViewController() -> UIViewController? {
-        let vc = UIApplication.shared.keyWindow?.rootViewController
+        let vc = getKeyWindow()?.rootViewController
         let topVC = findNextViewControllerFrom(vc: vc)
         return topVC
     }

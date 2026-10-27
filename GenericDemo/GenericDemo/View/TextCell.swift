@@ -11,8 +11,19 @@ import SnapKit
 
 class TextCell: BaseTableViewCell {
     
-    var icon: UIImageView!
-    var label: UILabel!
+    lazy var icon: UIImageView = {
+        let icon = UIImageView.init()
+        icon.contentMode = .scaleAspectFit
+        return icon
+    }()
+    lazy var label: UILabel = {
+        let label = UILabel.init()
+        label.textColor = UIColor.generic.hexColor("666666")
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        label.preferredMaxLayoutWidth = kScreenWidth - 10 - 30 - 10 - 10
+        return label
+    }()
     var textList: [String] = [
         "火火火火火火火火火火火火火火",
         "水水水水水水水水水水水水水水",
@@ -24,15 +35,8 @@ class TextCell: BaseTableViewCell {
     ]
     
     override func setupUI() {
-        icon = UIImageView.init()
-        icon.contentMode = .scaleAspectFit
-        contentView.addSubview(icon)
         
-        label = UILabel.init()
-        label.textColor = UIColor.generic.hexColor("666666")
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = kScreenWidth - 10 - 30 - 10 - 10
+        contentView.addSubview(icon)
         contentView.addSubview(label)
         
         icon.snp.makeConstraints { make in

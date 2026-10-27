@@ -23,11 +23,21 @@ open class SegmentTabView: BaseView {
     
     public var btnList: [UIButton] = []
     
-    public var indicatorLine: UIView!
+    public private(set) lazy var indicatorLine: UIView = {
+        let view = UIView.init()
+        view.backgroundColor = option.indicatorColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    public private(set) lazy var bottomLine: UIView = {
+        let view = UIView.init()
+        view.backgroundColor = option.bottomLineColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     public var indicatorConstraints: [NSLayoutConstraint] = []
-    
-    public var bottomLine: UIView!
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -41,18 +51,6 @@ open class SegmentTabView: BaseView {
     open override func setupUI() {
         self.backgroundColor = option.backgroundColor
         
-        indicatorLine = {
-            let view = UIView.init()
-            view.backgroundColor = option.indicatorColor
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
-        bottomLine = {
-            let view = UIView.init()
-            view.backgroundColor = option.bottomLineColor
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
         addSubview(indicatorLine)
         addSubview(bottomLine)
         

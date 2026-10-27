@@ -20,10 +20,11 @@ class UITextViewVC: ProjBaseViewController {
         textView.autocorrectionType = .no
         textView.spellCheckingType = .no
         textView.autocapitalizationType = .none
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 35))
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
         let done = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(done))
         let space = UIBarButtonItem.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbar.items = [space, done]
+        toolbar.sizeToFit()
         textView.inputAccessoryView = toolbar
         textView.layer.cornerRadius = 8
         textView.layer.masksToBounds = true

@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		500A837A2BFA2D7800A02BA1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A83792BFA2D7800A02BA1 /* MenuViewController.swift */; };
+		5013A4453077A11C003C6970 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013A4443077A11C003C6970 /* SceneDelegate.swift */; };
 		5014F4FF2BE764DF00A4B9BB /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5014F4FD2BE764DF00A4B9BB /* Alamofire.xcframework */; };
 		5014F5002BE764DF00A4B9BB /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5014F4FD2BE764DF00A4B9BB /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5014F5012BE764DF00A4B9BB /* SnapKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5014F4FE2BE764DF00A4B9BB /* SnapKit.xcframework */; };
@@ -103,12 +104,13 @@
 
 /* Begin PBXFileReference section */
 		500A83792BFA2D7800A02BA1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		5013A4443077A11C003C6970 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5014F4FD2BE764DF00A4B9BB /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = ../Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 		5014F4FE2BE764DF00A4B9BB /* SnapKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SnapKit.xcframework; path = ../Carthage/Build/SnapKit.xcframework; sourceTree = "<group>"; };
 		5014F5332BE766D300A4B9BB /* Generic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Generic.xcodeproj; path = ../Generic/Generic.xcodeproj; sourceTree = "<group>"; };
 		5014F5462BE78A5D00A4B9BB /* BViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BViewController.swift; sourceTree = "<group>"; };
 		5014F5482BE7950800A4B9BB /* CViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CViewController.swift; sourceTree = "<group>"; };
-		5014F5552BE7A33400A4B9BB /* Kingfisher.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:A4YJ9MRZ66:Wei Wang"; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = ../Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
+		5014F5552BE7A33400A4B9BB /* Kingfisher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Kingfisher.xcframework; path = ../Carthage/Build/Kingfisher.xcframework; sourceTree = "<group>"; };
 		5014F5712BE89AD800A4B9BB /* DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DViewController.swift; sourceTree = "<group>"; };
 		5014F5732BE89AE700A4B9BB /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 		501587932C29B431000BFB04 /* WaterfallLayoutTestVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayoutTestVC2.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				50E2CEE12BE68CB60051B01D /* AppDelegate.swift */,
+				5013A4443077A11C003C6970 /* SceneDelegate.swift */,
 				501587972C29B7DD000BFB04 /* GenericDemo-Bridging-Header.h */,
 				50A865502C283B7800933520 /* ViewController */,
 				50A865512C283B8D00933520 /* View */,
@@ -376,6 +379,7 @@
 				50FD34CA2C1EC70700072BA3 /* CircleLayoutVC.swift in Sources */,
 				501587962C29B746000BFB04 /* BannerCell.swift in Sources */,
 				50AE4CAD2C02B8FD004687E7 /* TableHeaderView.swift in Sources */,
+				5013A4453077A11C003C6970 /* SceneDelegate.swift in Sources */,
 				50E9E5A42C1717810044F1B9 /* SegmentTabViewController.swift in Sources */,
 				50B2F89C2C0E13E800311D6C /* ViewLoadingViewController.swift in Sources */,
 				50E2CEE62BE68CB60051B01D /* AViewController.swift in Sources */,
@@ -572,7 +576,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -600,7 +604,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

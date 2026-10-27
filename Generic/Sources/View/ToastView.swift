@@ -17,27 +17,25 @@ open class ToastView: BaseView, CAAnimationDelegate {
     
     open var text: String? {
         didSet {
-            label!.text = text
+            label.text = text
         }
     }
     
-    open var label: UILabel!
+    open private(set) lazy var label: UILabel = {
+        let label = UILabel.init()
+        label.textColor = option.textColor
+        label.font = option.font
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     open override func setupUI() {
         self.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.layer.cornerRadius = option.cornerRadius
         self.layer.masksToBounds = true
         self.isUserInteractionEnabled = false
-        
-        label = {
-            let label = UILabel.init()
-            label.textColor = option.textColor
-            label.font = option.font
-            label.numberOfLines = 0
-            label.textAlignment = .center
-            label.translatesAutoresizingMaskIntoConstraints = false
-            return label
-        }()
         
         self.addSubview(label)
         

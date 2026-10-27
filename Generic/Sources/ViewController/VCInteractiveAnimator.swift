@@ -89,8 +89,9 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
     }
     
     public func animateTransition(using transitionContext: any UIViewControllerContextTransitioning) {
-        let fromView = transitionContext.view(forKey: .from)!
-        let toView = transitionContext.view(forKey: .to)!
+        guard let fromView = transitionContext.view(forKey: .from),
+                let toView = transitionContext.view(forKey: .to)
+        else { return }
         let containerView = transitionContext.containerView
         
         if type == .type1 {
@@ -115,7 +116,7 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
             } else {
-                let bgView = containerView.viewWithTag(2001)!
+                let bgView = containerView.viewWithTag(2001) ?? .init()
                 toView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
                 containerView.insertSubview(toView, belowSubview: bgView)
                 
@@ -173,22 +174,24 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                 }
             }
         } else if type == .type3 {
+            guard let self_fromView = self.fromView, let self_toView = self.toView else { return }
+            
             if isPresent {
                 toView.alpha = 0
                 toView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight)
                 containerView.addSubview(toView)
                 
-                let fromViewSnapshot = self.fromView!.snapshotView(afterScreenUpdates: false) ?? UIView()
-                fromViewSnapshot.frame = self.fromView!.convert(self.fromView!.bounds, to: containerView)
+                let fromViewSnapshot = self_fromView.snapshotView(afterScreenUpdates: false) ?? UIView()
+                fromViewSnapshot.frame = self_fromView.convert(self_fromView.bounds, to: containerView)
                 containerView.addSubview(fromViewSnapshot)
-                self.fromView?.isHidden = true
-                self.toView?.isHidden = true
+                self_fromView.isHidden = true
+                self_toView.isHidden = true
                 
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut]) {
-                    fromViewSnapshot.frame = self.toView!.convert(self.toView!.bounds, to: containerView)
+                    fromViewSnapshot.frame = self_toView.convert(self_toView.bounds, to: containerView)
                     toView.alpha = 1
                 } completion: { finished in
-                    self.toView?.isHidden = false
+                    self_toView.isHidden = false
                     fromViewSnapshot.isHidden = true
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
@@ -196,13 +199,13 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                 containerView.insertSubview(toView, belowSubview: fromView)
                 let fromViewSnapshot = containerView.subviews.last
                 fromViewSnapshot?.isHidden = false
-                self.toView?.isHidden = true
+                self_toView.isHidden = true
 
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut]) {
-                    fromViewSnapshot?.frame = self.fromView!.convert(self.fromView!.bounds, to: containerView)
+                    fromViewSnapshot?.frame = self_fromView.convert(self_fromView.bounds, to: containerView)
                     fromView.alpha = 0
                 } completion: { finished in
-                    self.fromView?.isHidden = false
+                    self_fromView.isHidden = false
                     fromViewSnapshot?.isHidden = true
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
@@ -282,7 +285,7 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     bgView.addGestureRecognizer(tap)
                 }
             } else {
-                let bgView = containerView.viewWithTag(2005)!
+                let bgView = containerView.viewWithTag(2005) ?? .init()
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveLinear]) {
                     bgView.alpha = 0
                     fromView.alpha = 0
@@ -313,7 +316,7 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
             } else {
-                let bgView = containerView.viewWithTag(2006)!
+                let bgView = containerView.viewWithTag(2006) ?? .init()
                 containerView.insertSubview(toView, belowSubview: bgView)
                 
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut]) {
@@ -350,8 +353,8 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     bg.addGestureRecognizer(tap)
                 }
             } else {
-                let toViewSnapshot = containerView.viewWithTag(20072)!
-                let bg = containerView.viewWithTag(20071)!
+                let toViewSnapshot = containerView.viewWithTag(20072) ?? .init()
+                let bg = containerView.viewWithTag(20071) ?? .init()
                 
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut]) {
                     toViewSnapshot.transform = CGAffineTransformIdentity
@@ -392,7 +395,7 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     }
                 }
             } else {
-                let bgView = containerView.viewWithTag(2008)!
+                let bgView = containerView.viewWithTag(2008) ?? .init()
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveLinear]) {
                     fromView.transform = CGAffineTransformScale(fromView.transform, 1.3, 1.3)
                 } completion: { finished in
@@ -430,7 +433,7 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
             } else {
-                let bgView = containerView.viewWithTag(2009)!
+                let bgView = containerView.viewWithTag(2009) ?? .init()
                 containerView.insertSubview(toView, belowSubview: bgView)
                 
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut]) {
@@ -463,7 +466,7 @@ extension VCInteractiveAnimator: UIViewControllerAnimatedTransitioning {
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 }
             } else {
-                let bgView = containerView.viewWithTag(2006)!
+                let bgView = containerView.viewWithTag(2006) ?? .init()
                 containerView.insertSubview(toView, belowSubview: bgView)
                 
                 UIView.animate(withDuration: transitionDuration(using: transitionContext), delay: 0, options: [.curveEaseOut]) {
@@ -537,7 +540,7 @@ extension VCInteractiveAnimator: CAAnimationDelegate {
     }
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-        let transitionContext = anim.value(forKey: "transitionContext") as! UIViewControllerContextTransitioning
+        guard let transitionContext = anim.value(forKey: "transitionContext") as? UIViewControllerContextTransitioning else { return }
         let fromView = transitionContext.view(forKey: .from)
         let toView = transitionContext.view(forKey: .to)
         if isPresent {

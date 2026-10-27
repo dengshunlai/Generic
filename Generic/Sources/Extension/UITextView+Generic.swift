@@ -25,17 +25,17 @@ private var maxLengthNumKey: Void?
 public extension GenericNameSpace where T: UITextView {
     
     func placeholderLabel() -> UILabel {
-        var label = objc_getAssociatedObject(obj, &placeholderLabelKey) as? UILabel
-        if label == nil {
-            label = UILabel()
-            label?.textColor = UIColor.generic.hexColor("999999")
-            label?.font = UIFont.systemFont(ofSize: 12)
-            label?.numberOfLines = 1
-            label?.textAlignment = .left
-            label?.translatesAutoresizingMaskIntoConstraints = false
-            setPlaceholderLabel(label: label!)
-        }
-        if let label = label, let aClass = NSClassFromString("_UITextContainerView") {
+        let label = objc_getAssociatedObject(obj, &placeholderLabelKey) as? UILabel ?? {
+            let label = UILabel()
+            label.textColor = UIColor.generic.hexColor("999999")
+            label.font = UIFont.systemFont(ofSize: 12)
+            label.numberOfLines = 1
+            label.textAlignment = .left
+            label.translatesAutoresizingMaskIntoConstraints = false
+            setPlaceholderLabel(label: label)
+            return label
+        }()
+        if let aClass = NSClassFromString("_UITextContainerView") {
             var textContainerView: UIView?
             for view in obj.subviews {
                 if view.isKind(of: aClass) {
@@ -52,26 +52,28 @@ public extension GenericNameSpace where T: UITextView {
                 ])
             }
         }
-        return label!
+        return label
     }
     
     func placeholderObserver() -> TextViewPlaceholderObserver {
-        var observer = objc_getAssociatedObject(obj, &placeholderObserverKey) as? TextViewPlaceholderObserver
-        if observer == nil {
-            observer = TextViewPlaceholderObserver()
-            observer?.textView = obj
-            setPlaceholderObserver(observer: observer!)
+        if let observer = objc_getAssociatedObject(obj, &placeholderObserverKey) as? TextViewPlaceholderObserver {
+            return observer
+        } else {
+            let observer = TextViewPlaceholderObserver()
+            observer.textView = obj
+            setPlaceholderObserver(observer: observer)
+            return observer
         }
-        return observer!
     }
     
     func maxLength() -> Int {
-        var length = objc_getAssociatedObject(obj, &maxLengthNumKey) as? Int
-        if length == nil {
-            length = 0
-            setMaxLength(length: length!)
+        if let length = objc_getAssociatedObject(obj, &maxLengthNumKey) as? Int {
+            return length
+        } else {
+            let length = 0
+            setMaxLength(length: length)
+            return length
         }
-        return length!
     }
     
     func setPlaceholderLabel(label: UILabel) {

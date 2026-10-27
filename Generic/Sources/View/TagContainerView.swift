@@ -236,7 +236,15 @@ open class TagContainerViewOption {
 
 open class TagView: UIControl {
 
-    open var label: UILabel!
+    open private(set) lazy var label: UILabel = {
+        let label = UILabel.init()
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     open var option = TagContainerViewOption() {
         didSet {
@@ -269,16 +277,6 @@ open class TagView: UIControl {
     }
     
     func setupUI() {
-        label = {
-            let label = UILabel.init()
-            label.textColor = UIColor.black
-            label.font = UIFont.systemFont(ofSize: 15)
-            label.numberOfLines = 1
-            label.textAlignment = .center
-            label.translatesAutoresizingMaskIntoConstraints = false
-            return label
-        }()
-        
         self.addSubview(label)
         
         NSLayoutConstraint.activate([
@@ -287,16 +285,16 @@ open class TagView: UIControl {
         ])
     }
     
+    open func refresh() {
+        refreshContent()
+    }
+    
     open func refreshContent() {
         self.backgroundColor = option.tagBackgroundColor
         self.layer.cornerRadius = option.tagCornerRadius
         self.layer.masksToBounds = true
         self.label.font = option.tagFont
         self.label.textColor = option.tagTitleColor
-    }
-    
-    open func refresh() {
-        refreshContent()
     }
     
     open override var intrinsicContentSize: CGSize {

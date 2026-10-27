@@ -105,7 +105,7 @@ class AcIndicatorViewController: ProjBaseViewController {
     }
     
     @objc func clickTypeBtn(sender: UIButton) {
-        activityIndicator.style = ActivityIndicatorStyle(rawValue: sender.tag)!
+        activityIndicator.style = ActivityIndicatorStyle(rawValue: sender.tag) ?? .style_0
         activityIndicator.starAnimation()
     }
 }

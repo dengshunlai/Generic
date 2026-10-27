@@ -168,8 +168,9 @@ extension PhotoBrowseView: UICollectionViewDelegateFlowLayout {
     }
     
     public func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let aCell = cell as! PhotoBrowseCell
-        aCell.scrollView.zoomScale = 1
+        if let aCell = cell as? PhotoBrowseCell {
+            aCell.scrollView.zoomScale = 1
+        }
     }
 }
 

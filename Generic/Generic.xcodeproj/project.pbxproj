@@ -120,6 +120,7 @@
 		5014F5252BE765C600A4B9BB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5014F5582BE7D9A900A4B9BB /* Generic.swift */,
 				50AE4CA92C02B333004687E7 /* Extension */,
 				50AE4CA82C02B315004687E7 /* Other */,
 				50AE4CA72C02B2F9004687E7 /* ViewController */,
@@ -199,7 +200,6 @@
 			children = (
 				5025C4B72BE91FA000963BD8 /* CodeStore.swift */,
 				5014F56D2BE893AB00A4B9BB /* Const.swift */,
-				5014F5582BE7D9A900A4B9BB /* Generic.swift */,
 				5014F55A2BE8793000A4B9BB /* Utils.swift */,
 			);
 			path = Other;
@@ -504,7 +504,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +539,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
